@@ -35,7 +35,6 @@ namespace DataStructures.Array
 			if (InnerList.Length / 2 == Count-1)
 				HalfOfArray();
 
-
 			if (Count > 0)
 				Count--;
 			return temp;
@@ -65,12 +64,13 @@ namespace DataStructures.Array
 
 		public IEnumerator<T> GetEnumerator()
 		{
-			throw new NotImplementedException();
+			//classımıza IEnumerable interfacesini kazandırmazsak foreach ile listemizi donemeyiz hata aliriz ve linq sorgular calistiramayiz
+			return InnerList.Take(Count).GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator(); //generic ifadelerle calistigimiz icin IEnumerator<T> GetEnumerator() metoduna yonlendirelim
 		}
 	}
 }
