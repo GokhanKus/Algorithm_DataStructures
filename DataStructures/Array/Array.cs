@@ -17,6 +17,11 @@ namespace DataStructures.Array
 			InnerList = new T[2];
 			Count = 0;
 		}
+		public void Add(T item)
+		{
+			InnerList[Count] = item;
+			Count++;
+		}
 		public object Clone()
 		{
 			throw new NotImplementedException();
