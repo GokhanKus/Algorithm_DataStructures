@@ -32,20 +32,33 @@ namespace Apps
 
 			//Console.WriteLine($"array count: {arr.Count} - array capacity: {arr.Capacity}");
 
-			var arr = new Array<int>();
-			for (int i = 0; i < 100; i++)
+			//---------------------------------------------------------------------------
+			//var arr = new Array<int>();
+			//for (int i = 0; i < 100; i++)
+			//{
+			//	arr.Add(i + 1);
+			//	Console.WriteLine($"{i + 1} added to the array");
+			//	Console.WriteLine($"{arr.Count} / {arr.Capacity}");
+			//}
+			//         Console.WriteLine();
+			//         for (int i = arr.Count; i >= 1; i--)
+			//{
+			//	Console.WriteLine($"{arr.RemoveLast()} removed from the array");
+			//	Console.WriteLine($"{arr.Count} / {arr.Capacity}");
+			//}
+			//         Console.WriteLine();
+
+			var arr = new Array<int>(1, 3, 5, 7);
+			//arr'nin bir kopyasi ama object tipinde dolayısıyla bunu yazdıramayız. tip donusumu yapmamız lazım; casting ya da as keywordu ile ..
+			//cloneArr ve arr birbirinden bagimsizdir referans tipli ifade değildir
+			//var cloneArr = (Array<int>)arr.Clone();
+			var cloneArr = arr.Clone() as Array<int>;
+			arr.Add(15);
+			cloneArr.Add(10);
+			foreach (var item in cloneArr)
 			{
-				arr.Add(i + 1);
-				Console.WriteLine($"{i + 1} added to the array");
-				Console.WriteLine($"{arr.Count} / {arr.Capacity}");
+				Console.Write($"{item,-3}");
 			}
-            Console.WriteLine();
-            for (int i = arr.Count; i >= 1; i--)
-			{
-				Console.WriteLine($"{arr.RemoveLast()} removed from the array");
-				Console.WriteLine($"{arr.Count} / {arr.Capacity}");
-			}
-            Console.WriteLine();
-        }
+		}
 	}
 }

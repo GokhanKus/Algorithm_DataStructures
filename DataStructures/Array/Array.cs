@@ -42,6 +42,18 @@ namespace DataStructures.Array
 			InnerList[Count] = item;
 			Count++;
 		}
+		public void AddRange(IEnumerable<T> collection)
+		{
+			throw new NotImplementedException();
+		}
+		public bool Remove(T item)
+		{
+			throw new NotImplementedException();
+		}
+		public void RemoveAt(int index)
+		{
+			throw new NotImplementedException();
+		}
 		public T RemoveLast()
 		{
 			if (Count == 0)
@@ -76,7 +88,13 @@ namespace DataStructures.Array
 
 		public object Clone()
 		{
-			throw new NotImplementedException();
+			//return this.MemberwiseClone(); //bu nesnenin butun ozelliklerinin yeni olusturulan, clonlanan ogeye gecmesini saglar
+			var arr = new Array<T>();
+			foreach (var item in this)
+			{
+				arr.Add(item);
+			}
+			return arr;
 		}
 
 		public IEnumerator<T> GetEnumerator()
