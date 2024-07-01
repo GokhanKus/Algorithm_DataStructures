@@ -22,6 +22,13 @@ namespace LinkedList
 			{
                 Console.WriteLine(item);
             }
+			var charList = new List<char> { 'a', 'b', 'c' };
+			var linkedList2 = new SinglyLinkedList<char>(charList);
+			foreach (var item in linkedList2)
+			{
+                Console.WriteLine(item);
+            }
+			var linkedList3 = new SinglyLinkedList<int>(1, 5, 11, 16);
 		}
 	}
 }

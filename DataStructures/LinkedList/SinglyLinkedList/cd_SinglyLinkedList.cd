@@ -7,5 +7,21 @@
       <FileName>LinkedList\SinglyLinkedList\SinglyLinkedListNode.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="DataStructuresLibrary.LinkedList.SinglyLinkedList.SinglyLinkedList&lt;T&gt;">
+    <Position X="10.5" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AACAABAAAAAAAJAAAAAAIAAIAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>LinkedList\SinglyLinkedList\SinglyLinkedList.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStructuresLibrary.LinkedList.SinglyLinkedList.SinglyLinkedListEnumerator&lt;T&gt;">
+    <Position X="7" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAABIAAAACAAAAAAAAAAAAAoAAABAAAAAA=</HashCode>
+      <FileName>LinkedList\SinglyLinkedList\SinglyLinkedListEnumerator.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

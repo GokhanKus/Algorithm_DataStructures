@@ -7,14 +7,32 @@ using System.Threading.Tasks;
 
 namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 {
-	public class SinglyLinkedList<T>:IEnumerable<T>
+	public class SinglyLinkedList<T> : IEnumerable<T>
 	{
-		public SinglyLinkedListNode<T>? Head { get; set; } //ilk node'umuz, ilk degerimiz
-        private bool isHeadNull => Head == null;
+		public SinglyLinkedList()
+		{
 
-        //veri eklerken ilk dugume ekleme metodu Head kısmı degisir big O(1)
-        //bu metot her zaman listenin basina ekleme yapar
-        public void AddFirst(T value)
+		}
+		public SinglyLinkedList(IEnumerable<T> collection)
+		{
+			foreach (var item in collection)
+			{
+				AddLast(item);
+			}
+		}
+        public SinglyLinkedList(params T[] values)
+        {
+			foreach (var value in values)
+			{
+				AddLast(value);
+			}
+        }
+        public SinglyLinkedListNode<T>? Head { get; set; } //ilk node'umuz, ilk degerimiz
+		private bool isHeadNull => Head == null;
+
+		//veri eklerken ilk dugume ekleme metodu Head kısmı degisir big O(1)
+		//bu metot her zaman listenin basina ekleme yapar
+		public void AddFirst(T value)
 		{
 			var newNode = new SinglyLinkedListNode<T>(value); //parametre olarak gelen deger ile yeni node olusturuluyor ve next propu(pointer) null oluyor
 			newNode.Next = Head; //bu satirda yeni eklenen dugume (newNode) headi isaret etmesini soyluyoruz
@@ -63,7 +81,7 @@ namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 			}
 			throw new ArgumentException("the reference node is not in this list");
 		}
-		
+
 		public void AddBefore(SinglyLinkedListNode<T> refNode, T value)
 		{
 			if (refNode == null)
@@ -99,7 +117,7 @@ namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 
 		public IEnumerator<T> GetEnumerator()
 		{
-			return new SinglyLinkedListEnumerator<T>(Head);	
+			return new SinglyLinkedListEnumerator<T>(Head);
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
