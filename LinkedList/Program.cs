@@ -18,7 +18,10 @@ namespace LinkedList
 			//3 2 1 32 4 5
 			linkedList.AddBefore(linkedList.Head.Next.Next, 30);
 			//3 2 30 1 32 4 5
-
+			foreach (var item in linkedList)
+			{
+                Console.WriteLine(item);
+            }
 		}
 	}
 }

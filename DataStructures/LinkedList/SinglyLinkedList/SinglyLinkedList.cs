@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 {
-	public class SinglyLinkedList<T>
+	public class SinglyLinkedList<T>:IEnumerable<T>
 	{
 		public SinglyLinkedListNode<T>? Head { get; set; } //ilk node'umuz, ilk degerimiz
         private bool isHeadNull => Head == null;
@@ -94,6 +95,16 @@ namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 		public void AddAfter(SinglyLinkedListNode<T> refNode, SinglyLinkedListNode<T> newNode)
 		{
 			throw new NotImplementedException();
+		}
+
+		public IEnumerator<T> GetEnumerator()
+		{
+			return new SinglyLinkedListEnumerator<T>(Head);	
+		}
+
+		IEnumerator IEnumerable.GetEnumerator()
+		{
+			return GetEnumerator();
 		}
 	}
 }
