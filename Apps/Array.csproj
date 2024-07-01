@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DataStructures\DataStructures.csproj" />
+    <ProjectReference Include="..\DataStructures\DataStructuresLibrary.csproj" />
   </ItemGroup>
 
 </Project>
