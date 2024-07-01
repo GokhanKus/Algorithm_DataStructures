@@ -10,7 +10,9 @@ namespace LinkedList
 			linkedList.AddFirst(1);
 			linkedList.AddFirst(2);
 			linkedList.AddFirst(3);
-			Console.ReadKey();
+
+			linkedList.AddLast(4);
+			linkedList.AddLast(5);
 		}
 	}
 }
