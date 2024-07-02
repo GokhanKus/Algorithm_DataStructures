@@ -20,16 +20,39 @@ namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 				AddLast(item);
 			}
 		}
-        public SinglyLinkedList(params T[] values)
-        {
+		public SinglyLinkedList(params T[] values)
+		{
 			foreach (var value in values)
 			{
 				AddLast(value);
 			}
-        }
-        public SinglyLinkedListNode<T>? Head { get; set; } //ilk node'umuz, ilk degerimiz
+		}
+		public SinglyLinkedListNode<T>? Head { get; set; } //ilk node'umuz, ilk degerimiz
 		private bool isHeadNull => Head == null;
 
+		//Big O(1)
+		public T RemoveFirst()
+		{
+			if (isHeadNull)
+				throw new Exception("nothing to remove");
+			var firstValue = Head.Value;
+			Head = Head.Next;
+			return firstValue;
+		}
+		//big O(n)
+		public T RemoveLast()
+		{
+			var current = Head;
+			SinglyLinkedListNode<T> prev = null;
+			while (current.Next != null)
+			{
+				prev = current;
+				current = current.Next;
+			}
+			var lastValue = prev.Next.Value;
+			prev.Next = null;
+			return lastValue;
+		}
 		//veri eklerken ilk dugume ekleme metodu Head kısmı degisir big O(1)
 		//bu metot her zaman listenin basina ekleme yapar
 		public void AddFirst(T value)

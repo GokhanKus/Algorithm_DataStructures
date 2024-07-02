@@ -8,8 +8,19 @@ namespace LinkedList
 		{
 			//LinkedListApp1();
 			//LinkedListApp2();
-			LinkedListApp3();
+			//LinkedListApp3();
+			//LinkedListApp4();
+		}
 
+		private static void LinkedListApp4()
+		{
+			var linkedList = new SinglyLinkedList<int>();
+			linkedList.AddLast(1);
+			linkedList.AddLast(2);
+			linkedList.AddLast(3);
+			linkedList.AddFirst(0);
+			linkedList.RemoveFirst();
+			linkedList.RemoveLast();
 		}
 
 		private static void LinkedListApp3()
