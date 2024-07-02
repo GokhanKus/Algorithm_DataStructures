@@ -6,13 +6,26 @@ namespace LinkedList
 	{
 		static void Main(string[] args)
 		{
-			//LinkedListApp1();
-			//LinkedListApp2();
-			//LinkedListApp3();
-			//LinkedListApp4();
+			//SinglyLinkedListApp1();
+			//SinglyLinkedListApp2();
+			//SinglyLinkedListApp3();
+			//SinglyLinkedListApp4();
+			//SinglyLinkedListApp5();
 		}
 
-		private static void LinkedListApp4()
+		private static void SinglyLinkedListApp5()
+		{
+			var list = new SinglyLinkedList<int>(2, 4, 8, 16, 32);
+			list.Remove(2);
+			list.Remove(32);
+			list.Remove(8);
+			foreach (var item in list)
+			{
+				Console.WriteLine(item);
+			}
+		}
+
+		private static void SinglyLinkedListApp4()
 		{
 			var linkedList = new SinglyLinkedList<int>();
 			linkedList.AddLast(1);
@@ -23,7 +36,7 @@ namespace LinkedList
 			linkedList.RemoveLast();
 		}
 
-		private static void LinkedListApp3()
+		private static void SinglyLinkedListApp3()
 		{
 			var rnd = new Random();
 			var initial = Enumerable.Range(1, 10).OrderBy(x => rnd.Next()).ToList();
@@ -40,7 +53,7 @@ namespace LinkedList
 
 			linkedList.Where(x => x > 5).ToList().ForEach(x => Console.Write(x + " "));
 		}
-		private static void LinkedListApp2()
+		private static void SinglyLinkedListApp2()
 		{
 			var charList = new List<char> { 'a', 'b', 'c' };
 			var linkedList2 = new SinglyLinkedList<char>(charList);
@@ -50,7 +63,7 @@ namespace LinkedList
 			}
 			var linkedList3 = new SinglyLinkedList<int>(1, 5, 11, 16);
 		}
-		private static void LinkedListApp1()
+		private static void SinglyLinkedListApp1()
 		{
 			var linkedList = new SinglyLinkedList<int>();
 			linkedList.AddFirst(1);

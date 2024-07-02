@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -43,7 +44,7 @@ namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 		public T RemoveLast()
 		{
 			var current = Head;
-			SinglyLinkedListNode<T> prev = null;
+			SinglyLinkedListNode<T> prev = null; // current'dan bir onceki dugum
 			while (current.Next != null)
 			{
 				prev = current;
@@ -52,6 +53,53 @@ namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 			var lastValue = prev.Next.Value;
 			prev.Next = null;
 			return lastValue;
+		}
+		public void Remove(T value)
+		{
+			if (isHeadNull)
+				throw new Exception("nothing to remove");
+			if (value == null)
+				throw new ArgumentNullException();
+
+			var current = Head;
+			SinglyLinkedListNode<T>? prev = null;
+			do
+			{
+				if (current.Value.Equals(value))//current.Value == value yazamazsın T'Den T'ye olmaz generic prog, o yuzden equals()
+				{
+					if (current.Next == null)//son eleman mı? 
+					{
+						if (prev == null) //head ve tek eleman vardir, silinmek istenen deger head olabilir
+						{
+							Head = null;
+							return;
+						}
+
+						else //son eleman, silinmek istenen deger son dugum olabilir
+						{
+							prev.Next = null;
+							return;
+						}
+					}
+					else
+					{
+						if (prev == null) //head
+						{
+							Head = Head.Next;
+							return;
+						}
+
+						else //esas ifade burasi
+						{
+							prev.Next = current.Next;
+							return;
+						}
+					}
+				}
+				prev = current;
+				current = current.Next;
+			} while (current != null);
+			throw new Exception("the value could not be found in the list!");
 		}
 		//veri eklerken ilk dugume ekleme metodu Head kısmı degisir big O(1)
 		//bu metot her zaman listenin basina ekleme yapar
