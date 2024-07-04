@@ -27,6 +27,11 @@ namespace LinkedList
 			dbLinkedList.AddAfter(dbLinkedList.Head, new DoublyLinkedListNode<int>(20)); // 4 20 5
 			dbLinkedList.AddBefore(dbLinkedList.Head, new DoublyLinkedListNode<int>(30)); //30 4 20 5
 			dbLinkedList.AddBefore(dbLinkedList.Head.Next.Next, new DoublyLinkedListNode<int>(50)); //30 4 50 20 5
+			//var nodeList = dbLinkedList.GetAllNodes(); //dugumleri bir listeye atar
+			foreach (var item in dbLinkedList)
+			{
+                Console.WriteLine(item);
+            }
 		}
 
 		private static void SinglyLinkedListApp5()
