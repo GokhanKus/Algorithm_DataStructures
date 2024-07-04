@@ -23,7 +23,10 @@ namespace LinkedList
 			//dbLinkedList.AddFirst(2);
 			//dbLinkedList.AddFirst(1);
 			dbLinkedList.AddLast(4);
-			dbLinkedList.AddLast(5);
+			dbLinkedList.AddLast(5); // 4 5 
+			dbLinkedList.AddAfter(dbLinkedList.Head, new DoublyLinkedListNode<int>(20)); // 4 20 5
+			dbLinkedList.AddBefore(dbLinkedList.Head, new DoublyLinkedListNode<int>(30)); //30 4 20 5
+			dbLinkedList.AddBefore(dbLinkedList.Head.Next.Next, new DoublyLinkedListNode<int>(50)); //30 4 50 20 5
 		}
 
 		private static void SinglyLinkedListApp5()
