@@ -12,15 +12,18 @@ namespace LinkedList
 			//SinglyLinkedListApp3();
 			//SinglyLinkedListApp4();
 			//SinglyLinkedListApp5();
-			//DoublyLinkedListApp1();
+
+			DoublyLinkedListApp1();
 		}
 
 		private static void DoublyLinkedListApp1()
 		{
 			var dbLinkedList = new DoublyLinkedList<int>();
-			dbLinkedList.AddFirst(3);
-			dbLinkedList.AddFirst(2);
-			dbLinkedList.AddFirst(1);
+			//dbLinkedList.AddFirst(3);
+			//dbLinkedList.AddFirst(2);
+			//dbLinkedList.AddFirst(1);
+			dbLinkedList.AddLast(4);
+			dbLinkedList.AddLast(5);
 		}
 
 		private static void SinglyLinkedListApp5()
