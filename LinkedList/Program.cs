@@ -20,8 +20,16 @@ namespace LinkedList
 		private static void DoublyLinkedListApp2()
 		{
 			var names = new DoublyLinkedList<string>("molly", "polly", "tilly", "billy");
-			var numbers = new DoublyLinkedList<int>(new int[] { 1, 2, 3, 4, 5, 6 });
+			var numbers = new DoublyLinkedList<int>(new int[] { 1, 2, 3, 4, 5, 6, 7, 8 });
 			var chars = new DoublyLinkedList<char>(new List<char> { 'a', 'b', 'c', 'd' });
+			numbers.Remove(5);
+			string a1 = names.RemoveFirst();
+			string a2 = names.RemoveLast();
+			int b1 = numbers.RemoveFirst();
+			int b2 = numbers.RemoveLast();
+			char c1 = chars.RemoveFirst();
+			char c2 = chars.RemoveLast();
+
 
 			foreach (var name in names)
 			{
@@ -84,7 +92,7 @@ namespace LinkedList
 			var rnd = new Random();
 			var initial = Enumerable.Range(1, 10).OrderBy(x => rnd.Next()).ToList();
 			var linkedList = new SinglyLinkedList<int>(initial);
-			
+
 			var q = from item in linkedList
 					where item % 2 == 0
 					select item;

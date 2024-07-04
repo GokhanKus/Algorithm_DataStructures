@@ -11,7 +11,8 @@ namespace DataStructuresLibrary.LinkedList.DoublyLinkedList
 	{
 		public DoublyLinkedListNode<T>? Head { get; set; }
 		public DoublyLinkedListNode<T>? Tail { get; set; }
-
+		private bool isHeadNull => Head == null;
+		private bool isTailNull => Tail == null;
 		//linked list basina eleman ekleme big O(1)
 		public DoublyLinkedList()
 		{
@@ -121,6 +122,85 @@ namespace DataStructuresLibrary.LinkedList.DoublyLinkedList
 				newNode.Prev = null;
 				Head = newNode;
 			}
+		}
+		public T RemoveFirst()
+		{
+			if (isHeadNull)
+				throw new Exception();
+
+			var temp = Head.Value;
+			if (Head == Tail) //1 eleman varsa onu silecegiz bu if kısmında ve head ile tail null olmalı
+			{
+				Head = null;
+				Tail = null;
+			}
+			else
+			{
+				Head = Head.Next;
+				Head.Prev = null;
+			}
+			return temp;
+		}
+		public T RemoveLast()
+		{
+			if (isTailNull)
+				throw new Exception();
+			var temp = Tail.Value;
+
+			if (Head == Tail)
+			{
+				Head = null;
+				Tail = null;
+			}
+			else
+			{
+				Tail = Tail.Prev;
+				Tail.Next = null;
+
+				//Tail.Prev.Next = null;
+				//Tail = Tail.Prev;
+			}
+			return temp;
+		}
+		public void Remove(T value)
+		{
+			if (isHeadNull || isTailNull)
+				throw new Exception("empty list");
+
+			if (Head == Tail) // tek eleman var demektir
+			{
+				if (Head.Value.Equals(value))
+					RemoveFirst();
+				return;
+			}
+			var current = Head;
+			while (current != null)
+			{
+				if (current.Value.Equals(value))
+				{
+					if (current.Prev == null) //ilk eleman silinecek demektir
+					{
+						Head = current.Next;
+						current.Next.Prev = null;
+						return;
+					}
+
+					else if (current.Next == null) //son eleman silinecek demektir
+					{
+						Tail = current.Prev;
+						current.Prev.Next = null;
+						return;
+					}
+					else //silinecek eleman arada bir yerde..
+					{
+						current.Prev.Next = current.Next;
+						current.Next.Prev = current.Prev;
+						return;
+					}
+				}
+				current = current.Next;
+			}
+			throw new Exception("the value could not be found in the list!");
 		}
 		private List<DoublyLinkedListNode<T>> GetAllNodes()
 		{
