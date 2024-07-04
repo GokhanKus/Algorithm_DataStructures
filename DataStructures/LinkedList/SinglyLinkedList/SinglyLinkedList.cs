@@ -10,6 +10,8 @@ namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 {
 	public class SinglyLinkedList<T> : IEnumerable<T>
 	{
+		public SinglyLinkedListNode<T>? Head { get; set; } //ilk node'umuz, ilk degerimiz
+		private bool isHeadNull => Head == null;
 		public SinglyLinkedList()
 		{
 
@@ -28,8 +30,6 @@ namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 				AddLast(value);
 			}
 		}
-		public SinglyLinkedListNode<T>? Head { get; set; } //ilk node'umuz, ilk degerimiz
-		private bool isHeadNull => Head == null;
 
 		//Big O(1)
 		public T RemoveFirst()
