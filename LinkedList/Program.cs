@@ -13,7 +13,28 @@ namespace LinkedList
 			//SinglyLinkedListApp4();
 			//SinglyLinkedListApp5();
 
-			DoublyLinkedListApp1();
+			//DoublyLinkedListApp1();
+			DoublyLinkedListApp2();
+		}
+
+		private static void DoublyLinkedListApp2()
+		{
+			var names = new DoublyLinkedList<string>("molly", "polly", "tilly", "billy");
+			var numbers = new DoublyLinkedList<int>(new int[] { 1, 2, 3, 4, 5, 6 });
+			var chars = new DoublyLinkedList<char>(new List<char> { 'a', 'b', 'c', 'd' });
+
+			foreach (var name in names)
+			{
+				Console.Write(name + " ");
+			}
+			foreach (var number in numbers)
+			{
+				Console.Write(number + " ");
+			}
+			foreach (var character in chars)
+			{
+				Console.Write(character + " ");
+			}
 		}
 
 		private static void DoublyLinkedListApp1()
@@ -27,11 +48,11 @@ namespace LinkedList
 			dbLinkedList.AddAfter(dbLinkedList.Head, new DoublyLinkedListNode<int>(20)); // 4 20 5
 			dbLinkedList.AddBefore(dbLinkedList.Head, new DoublyLinkedListNode<int>(30)); //30 4 20 5
 			dbLinkedList.AddBefore(dbLinkedList.Head.Next.Next, new DoublyLinkedListNode<int>(50)); //30 4 50 20 5
-			//var nodeList = dbLinkedList.GetAllNodes(); //dugumleri bir listeye atar
+																									//var nodeList = dbLinkedList.GetAllNodes(); //dugumleri bir listeye atar
 			foreach (var item in dbLinkedList)
 			{
-                Console.WriteLine(item);
-            }
+				Console.WriteLine(item);
+			}
 		}
 
 		private static void SinglyLinkedListApp5()
@@ -40,6 +61,7 @@ namespace LinkedList
 			list.Remove(2);
 			list.Remove(32);
 			list.Remove(8);
+
 			foreach (var item in list)
 			{
 				Console.WriteLine(item);
@@ -62,7 +84,7 @@ namespace LinkedList
 			var rnd = new Random();
 			var initial = Enumerable.Range(1, 10).OrderBy(x => rnd.Next()).ToList();
 			var linkedList = new SinglyLinkedList<int>(initial);
-
+			
 			var q = from item in linkedList
 					where item % 2 == 0
 					select item;

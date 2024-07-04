@@ -7,12 +7,30 @@ using System.Threading.Tasks;
 
 namespace DataStructuresLibrary.LinkedList.DoublyLinkedList
 {
-	public class DoublyLinkedList<T>:IEnumerable
+	public class DoublyLinkedList<T> : IEnumerable //IEnumerable<T> olarak yapmadigimiz icin program.cs'te linq metotlari gelmedi
 	{
-		public DoublyLinkedListNode<T> Head { get; set; }
-		public DoublyLinkedListNode<T> Tail { get; set; }
+		public DoublyLinkedListNode<T>? Head { get; set; }
+		public DoublyLinkedListNode<T>? Tail { get; set; }
 
 		//linked list basina eleman ekleme big O(1)
+		public DoublyLinkedList()
+		{
+
+		}
+		public DoublyLinkedList(params T[] values)
+		{
+			foreach (var item in values)
+			{
+				AddLast(item);
+			}
+		}
+		public DoublyLinkedList(IEnumerable<T> collection)
+		{
+			foreach (var item in collection)
+			{
+				AddLast(item);
+			}
+		}
 		public void AddFirst(T value)
 		{
 			var newNode = new DoublyLinkedListNode<T>(value);
