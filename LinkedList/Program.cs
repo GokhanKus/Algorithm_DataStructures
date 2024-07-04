@@ -1,4 +1,5 @@
-﻿using DataStructuresLibrary.LinkedList.SinglyLinkedList;
+﻿using DataStructuresLibrary.LinkedList.DoublyLinkedList;
+using DataStructuresLibrary.LinkedList.SinglyLinkedList;
 
 namespace LinkedList
 {
@@ -11,6 +12,15 @@ namespace LinkedList
 			//SinglyLinkedListApp3();
 			//SinglyLinkedListApp4();
 			//SinglyLinkedListApp5();
+			//DoublyLinkedListApp1();
+		}
+
+		private static void DoublyLinkedListApp1()
+		{
+			var dbLinkedList = new DoublyLinkedList<int>();
+			dbLinkedList.AddFirst(3);
+			dbLinkedList.AddFirst(2);
+			dbLinkedList.AddFirst(1);
 		}
 
 		private static void SinglyLinkedListApp5()
