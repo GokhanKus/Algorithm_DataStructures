@@ -16,7 +16,6 @@ namespace LinkedList
 			//DoublyLinkedListApp1();
 			DoublyLinkedListApp2();
 		}
-
 		private static void DoublyLinkedListApp2()
 		{
 			var names = new DoublyLinkedList<string>("molly", "polly", "tilly", "billy");
@@ -29,7 +28,6 @@ namespace LinkedList
 			int b2 = numbers.RemoveLast();
 			char c1 = chars.RemoveFirst();
 			char c2 = chars.RemoveLast();
-
 
 			foreach (var name in names)
 			{
@@ -44,7 +42,6 @@ namespace LinkedList
 				Console.Write(character + " ");
 			}
 		}
-
 		private static void DoublyLinkedListApp1()
 		{
 			var dbLinkedList = new DoublyLinkedList<int>();
@@ -62,7 +59,6 @@ namespace LinkedList
 				Console.WriteLine(item);
 			}
 		}
-
 		private static void SinglyLinkedListApp5()
 		{
 			var list = new SinglyLinkedList<int>(2, 4, 8, 16, 32);
@@ -75,7 +71,6 @@ namespace LinkedList
 				Console.WriteLine(item);
 			}
 		}
-
 		private static void SinglyLinkedListApp4()
 		{
 			var linkedList = new SinglyLinkedList<int>();
@@ -86,7 +81,6 @@ namespace LinkedList
 			linkedList.RemoveFirst();
 			linkedList.RemoveLast();
 		}
-
 		private static void SinglyLinkedListApp3()
 		{
 			var rnd = new Random();
