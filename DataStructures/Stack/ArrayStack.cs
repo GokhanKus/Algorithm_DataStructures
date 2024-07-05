@@ -1,27 +1,41 @@
 ﻿namespace DataStructuresLibrary.Stack
 {
-	internal class ArrayStack<T> : IStack<T>
+	public class ArrayStack<T> : IStack<T>
 	{
-		public int Count => throw new NotImplementedException();
+		public int Count { get; private set; }
+		private readonly List<T> list = new List<T>();
 
 		public void Clear()
 		{
-			throw new NotImplementedException();
+			list.Clear();
 		}
 
 		public T Peek()
 		{
-			throw new NotImplementedException();
+			if (Count == 0)
+				throw new Exception("no element was found");
+			var temp = list[list.Count - 1];
+			return temp;
 		}
 
 		public T Pop()
 		{
-			throw new NotImplementedException();
+			if (Count == 0)//eger count 0 ise silinecek eleman yok demektir 
+				throw new Exception("no element was found");
+
+			var temp = list[list.Count - 1];
+			list.RemoveAt(list.Count - 1); //stackten son elemani cikarir
+			Count--;
+			return temp;
 		}
 
 		public void Push(T value)
 		{
-			throw new NotImplementedException();
+			if (value is null)
+				throw new ArgumentNullException();
+
+			list.Add(value);
+			Count++;
 		}
 	}
 }
