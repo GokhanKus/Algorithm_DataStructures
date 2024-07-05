@@ -4,7 +4,6 @@
 	{
 		public int Count { get; private set; }
 		private readonly List<T> list = new List<T>();
-
 		public void Clear()
 		{
 			list.Clear();

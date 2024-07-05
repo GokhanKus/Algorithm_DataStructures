@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace DataStructuresLibrary.Stack
 {
-	public class Stack<T>
+	public class CustomStack<T>
 	{
 		private readonly IStack<T>? stack;
 		public int Count => stack.Count;
-		public Stack(StackType type = StackType.Array)
+		public CustomStack(StackType type = StackType.Array)
 		{
 			switch (type)
 			{
