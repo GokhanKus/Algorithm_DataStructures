@@ -9,6 +9,7 @@ namespace DataStructuresLibrary.Queue
 	public class CustomQueue<T>
 	{
 		private readonly IQueue<T> queue;
+		public int Count => queue.Count;
 		public CustomQueue(QueueType type = QueueType.Array)
 		{
 			switch (type)
@@ -22,6 +23,7 @@ namespace DataStructuresLibrary.Queue
 					break;
 			}
 		}
+		//asagidaki metotlar queue'nin tipine bagli olarak ArrayQueue ya da LinkedListQueue classinin icindeki metotlari calistirir polymorphism
 		public void EnQueue(T value)
 		{
 			queue.Enqueue(value);

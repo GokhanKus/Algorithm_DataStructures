@@ -23,20 +23,17 @@ namespace DataStructuresLibrary.Queue
 		}
 
 		public T Peek() => Count == 0 ? throw new Exception("empty queue") : list.Head.Value; //3lü kosul ifadesi
-																							  //{
-																							  //	if (Count == 0) throw new Exception("empty queue");
-																							  //	return list.Head.Value;
-																							  //}
-
+	    //{
+	    //	 if (Count == 0) throw new Exception("empty queue");
+	    //	 return list.Head.Value;
+	    //}
+	  
 		public T Front()
 		{
-			throw new NotImplementedException();
+			return Peek();
 		}
 
-		public T Rear()
-		{
-			throw new NotImplementedException();
-		}
+		public T Rear() => Count == 0 ? throw new Exception("empty queue") : list.Tail.Value; //3lü kosul ifadesi
 
 		public int Size()
 		{

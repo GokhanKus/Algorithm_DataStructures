@@ -29,13 +29,15 @@
 
 		public T Front()
 		{
-			throw new NotImplementedException();
+			return Peek();
 		}
 
 
 		public T Rear()
 		{
-			throw new NotImplementedException();
+			if (list.Count == 0)
+				throw new InvalidOperationException("Queue is empty");
+			return list[Count - 1]; // ^1 sonuncu öğeyi temsil eder
 		}
 
 		public int Size()
