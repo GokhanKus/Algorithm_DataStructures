@@ -9,6 +9,7 @@ namespace DataStructuresLibrary.Stack
 		public void Clear()
 		{
 			list.Head = null;
+			Count = 0;
 		}
 		public T Peek()
 		{

@@ -7,6 +7,7 @@
 		public void Clear()
 		{
 			list.Clear();
+			Count = 0;
 		}
 
 		public T Peek()

@@ -31,6 +31,7 @@ namespace Stack
 				stack1.Push(c);
 				stack2.Push(c);
 			}
+			stack2.Clear();
 			Console.WriteLine($"stack1 Peek item: {stack1.Peek()}"); //silinecek son elemani gosterir
 			Console.WriteLine($"stack2 Peek item: {stack2.Peek()}");
 
