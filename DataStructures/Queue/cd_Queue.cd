@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="DataStructuresLibrary.Queue.ArrayQueue&lt;T&gt;">
+    <Position X="6" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAAAAAAEgAAAAAAAAAQAAAgABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Queue\ArrayQueue.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStructuresLibrary.Queue.CustomQueue&lt;T&gt;">
+    <Position X="1" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAAAAAAEgAAAAABAAAAAAAgABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Queue\CustomQueue.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="DataStructuresLibrary.Queue.LinkedListQueue&lt;T&gt;">
+    <Position X="4" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAAAAAAEgAAAAAAAAAQAAAgABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Queue\LinkedListQueue.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="DataStructuresLibrary.Queue.IQueue&lt;T&gt;">
+    <Position X="6.25" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAEAAAAAAEgAAAAAAAAAQAAAgABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Queue\IQueue.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DataStructuresLibrary.Queue.QueueType">
+    <Position X="1.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAABAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Queue\QueueType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -2,16 +2,29 @@
 {
 	public class ArrayQueue<T> : IQueue<T>
 	{
-		public int Count => throw new NotImplementedException();
+		private readonly List<T> list = new List<T>();
+		public int Count { get; private set; }
 
 		public T DeQueue()
 		{
-			throw new NotImplementedException();
+			if (Count == 0) throw new Exception("empty queue");
+			var temp = list[0];
+			list.RemoveAt(0);
+			Count--;
+			return temp;
 		}
 
 		public void Enqueue(T value)
 		{
-			throw new NotImplementedException();
+			if (value == null) throw new ArgumentNullException();
+			list.Add(value);
+			Count++;
+		}
+		public T Peek()
+		{
+			if (Count == 0) throw new Exception("empty queue");
+			var temp = list[0];
+			return temp;
 		}
 
 		public T Front()
@@ -19,10 +32,6 @@
 			throw new NotImplementedException();
 		}
 
-		public T Peek()
-		{
-			throw new NotImplementedException();
-		}
 
 		public T Rear()
 		{
@@ -31,7 +40,7 @@
 
 		public int Size()
 		{
-			throw new NotImplementedException();
+			return list.Count;
 		}
 	}
 }
