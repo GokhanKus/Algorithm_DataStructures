@@ -1,4 +1,6 @@
 ﻿using DataStructuresLibrary.Tree.BinarySearchTree;
+using DataStructuresLibrary.Tree.BinaryTree;
+using System.Threading.Channels;
 namespace BinaryTree
 {
 	public class Program
@@ -21,6 +23,24 @@ namespace BinaryTree
 						  /
 						 48
 			 */
+			var bt = new BinaryTree<int>();
+
+			Console.Write("InOrder: ");
+			bt.InOrder(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
+
+			bt.ClearList();
+			Console.WriteLine();
+
+			Console.Write("PreOrder: ");
+			bt.PreOrder(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
+
+			bt.ClearList();
+			Console.WriteLine();
+
+			Console.Write("PostOrder: ");
+			bt.PostOrder(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
+
+
 			Console.ReadKey();
 		}
 	}
