@@ -24,6 +24,5 @@ namespace DataStructuresLibrary.Tree.BinarySearchTree
 		{
 			return $"{Value}";
 		}
-
 	}
 }
