@@ -15,6 +15,11 @@ namespace DataStructuresLibrary.Tree.BinarySearchTree
 		public BinarySearchTree()
 		{
 		}
+		public BinarySearchTree(IEnumerable<T> collection)
+		{
+			foreach (var value in collection)
+				Add(value);
+		}
 		public void Add(T value)
 		{
 			if (value is null)
