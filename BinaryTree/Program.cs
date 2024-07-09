@@ -7,13 +7,15 @@ namespace BinaryTree
 	{
 		static void Main(string[] args)
 		{
-			BSTApp1();
+			//BSTApp1();
+			BSTApp2();
 		}
 
 		private static void BSTApp1()
 		{
 			int[] values = { 15, 20, 17, 65, 5, 48 };
 			var bst = new BinarySearchTree<int>(values);
+			var bt = new BinaryTree<int>();
 			/*
 					15
 					/ \
@@ -23,23 +25,54 @@ namespace BinaryTree
 						  /
 						 48
 			 */
-			var bt = new BinaryTree<int>();
 
 			Console.Write("InOrder: ");
-			bt.InOrder(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
+			bt.InOrderRecursive(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
 
 			bt.ClearList();
 			Console.WriteLine();
 
 			Console.Write("PreOrder: ");
-			bt.PreOrder(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
+			bt.PreOrderRecursive(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
 
 			bt.ClearList();
 			Console.WriteLine();
 
 			Console.Write("PostOrder: ");
-			bt.PostOrder(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
+			bt.PostOrderRecursive(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
 
+			bt.ClearList();
+			Console.WriteLine();
+
+			Console.ReadKey();
+		}
+
+		private static void BSTApp2()
+		{
+			int[] values = { 15, 20, 17, 65, 5, 48 };
+			var bst = new BinarySearchTree<int>(values);
+			var bt = new BinaryTree<int>();
+
+			Console.Write("InOrder Non Recursive: ");
+			bt.InOrderNonRecursive(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
+
+			bt.ClearList();
+			Console.WriteLine();
+
+			Console.Write("PreOrder Non Recursive: ");
+			bt.PreOrderNonRecursive(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
+
+			bt.ClearList();
+			Console.WriteLine();
+
+			Console.Write("PostOrder Non Recursive: ");
+			bt.PostOrderNonRecursive(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
+
+			bt.ClearList();
+			Console.WriteLine();
+
+			Console.Write("Level Order Non Recursive: ");
+			bt.LevelOrderNonRecursive(bst.Root).ForEach(node => Console.Write($"{node,-3} "));
 
 			Console.ReadKey();
 		}
