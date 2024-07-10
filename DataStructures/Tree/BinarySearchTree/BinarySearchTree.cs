@@ -3,9 +3,9 @@ using DataStructuresLibrary.Tree.BinaryTree;
 
 namespace DataStructuresLibrary.Tree.BinarySearchTree
 {
-    //bir sinif CompareTo metoduna sahip degilse onu bst'de kullanamazsin node left right buyukse +1 esitse 0 kucukse -1 doner dugum degerleri karsilastirilabilir
-    //o yuzden kisitlama getirdik IComparable
-    public class BinarySearchTree<T> : IEnumerable<T> where T : IComparable
+	//bir sinif CompareTo metoduna sahip degilse onu bst'de kullanamazsin node left right buyukse +1 esitse 0 kucukse -1 doner dugum degerleri karsilastirilabilir
+	//o yuzden kisitlama getirdik IComparable
+	public class BinarySearchTree<T> : IEnumerable<T> where T : IComparable
 	{
 		public Node<T>? Root { get; set; }
 		public BinarySearchTree()
@@ -53,6 +53,22 @@ namespace DataStructuresLibrary.Tree.BinarySearchTree
 					}
 				}
 			}
+		}
+		public Node<T> FindMin(Node<T> root)
+		{
+			var current = root;
+			while (current.Left != null)
+				current = current.Left;
+
+			return current;
+		}
+		public Node<T> FindMax(Node<T> root)
+		{
+			var current = root;
+			while (current.Right != null)
+				current = current.Right;
+
+			return current;
 		}
 		public IEnumerator<T> GetEnumerator()
 		{
