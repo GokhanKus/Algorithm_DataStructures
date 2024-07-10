@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using DataStructuresLibrary.Tree.BinaryTree;
 
 namespace DataStructuresLibrary.Tree.BinarySearchTree
@@ -69,6 +71,47 @@ namespace DataStructuresLibrary.Tree.BinarySearchTree
 				current = current.Right;
 
 			return current;
+		}
+		public Node<T> Find(Node<T> root, T value)// big O (log(n))
+		{
+			var current = root;
+			//generic ifadelerde operator (=,<,>) kullanılmaz metot kullanilabilir
+			while (value.CompareTo(current.Value) != 0) //karsilastirmanin sonucu +1 donerse buyuk, 0 ise esit, -1 ise kucuktur
+			{
+				if (value.CompareTo(current.Value) == -1)
+					current = current.Left;
+				else //+1 ise yani buyukse..
+					current = current.Right;
+				if (current == null)
+					throw new ArgumentNullException("couldn't found the value in the tree");
+				//return default(Node<T>);
+			}
+			return current;
+		}
+		public Node<T> Remove(Node<T> root, T value)
+		{
+			if (root == null)
+				return root; //throw new ArgumentNullException();
+
+			//recursive
+			if (value.CompareTo(root.Value) < 0)
+				root.Left = Remove(root.Left, value);
+			else if (value.CompareTo(root.Value) > 0)
+				root.Right = Remove(root.Right, value);
+			else
+			{
+				//tek cocuk ya da cocuksuz
+				if (root.Left == null)
+					return root.Right;
+
+				else if (root.Right == null)
+					return root.Left;
+
+				//iki cocuk
+				root.Value = FindMin(root.Right).Value;
+				root.Right = Remove(root.Right, root.Value);
+			}
+			return root;
 		}
 		public IEnumerator<T> GetEnumerator()
 		{
