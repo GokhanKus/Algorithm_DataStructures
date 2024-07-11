@@ -12,7 +12,18 @@ namespace BinaryTree
 			//BSTApp3();
 			//BSTApp4();
 			//BSTApp5();
-			BSTApp6();
+			//BSTApp6();
+			BSTApp7();
+		}
+
+		private static void BSTApp7()
+		{
+			var bst = new BinarySearchTree<int>(new int[] { 23, 16, 45, 3, 22, 37, 99 });
+			var bt = new BinaryTree<int>();
+			var numberOfLeaves1 = bt.NumberOfLeaves1(bst.Root);
+			var numberOfLeaves2 = bt.NumberOfLeaves2(bst.Root);
+			Console.WriteLine($"number of leaves 1: {numberOfLeaves1}");
+			Console.WriteLine($"number of leaves 2: {numberOfLeaves2}");
 		}
 
 		private static void BSTApp6()

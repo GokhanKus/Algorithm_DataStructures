@@ -6,7 +6,7 @@ namespace DataStructuresLibrary.Tree.BinaryTree
 {
 	public class BinaryTree<T> where T : IComparable
 	{
-		public Node<T> Root { get; set; }
+		public Node<T>? Root { get; set; }
 		public List<Node<T>> list { get; private set; }
 		public BinaryTree()
 		{
@@ -170,6 +170,33 @@ namespace DataStructuresLibrary.Tree.BinaryTree
 		{
 			var list = LevelOrderNonRecursive(Root);
 			return list[list.Count - 1];
+		}
+		public int NumberOfLeaves1(Node<T> root) //number of leaf nodes on the tree
+		{
+			int count = 0;
+			if (root == null) return count;
+
+			var q = new CustomQueue<Node<T>>();
+			q.EnQueue(root);
+			while (q.Count > 0)
+			{
+				var temp = q.DeQueue();
+				if (temp.Left == null && temp.Right == null) //eger node'un cocugu yoksa yaprak dugumdur
+					count++;
+
+				if (temp.Left != null)
+					q.EnQueue(temp.Left);
+
+				if (temp.Right != null)
+					q.EnQueue(temp.Right);
+
+			}
+			return count;
+		}
+		public int NumberOfLeaves2(Node<T> root)
+		{
+			var numberOfLeaves = LevelOrderNonRecursive(root).Where(node => node.Left == null && node.Right == null).ToList().Count;
+			return numberOfLeaves;
 		}
 		public void ClearList() => list.Clear();
 	}
