@@ -6,6 +6,7 @@ namespace DataStructuresLibrary.Tree.BinaryTree
 {
 	public class BinaryTree<T> where T : IComparable
 	{
+		public Node<T> Root { get; set; }
 		public List<Node<T>> list { get; private set; }
 		public BinaryTree()
 		{
@@ -137,7 +138,39 @@ namespace DataStructuresLibrary.Tree.BinaryTree
 			}
 			return list;
 		}
+		public static int MaxDepth(Node<T> root)
+		{
+			if (root == null) return 0;
 
+			int leftDepth = MaxDepth(root.Left);
+			int rightDepth = MaxDepth(root.Right);
+
+			return (leftDepth > rightDepth) ?
+				leftDepth + 1 :
+				rightDepth + 1;
+		}
+		public Node<T> DeepestNode(Node<T> root)
+		{
+			Node<T> deepestNode = null;
+			if (root == null) throw new ArgumentNullException("empty tree!");
+
+			var queue = new CustomQueue<Node<T>>();
+			queue.EnQueue(root);
+			while (queue.Count > 0)
+			{
+				deepestNode = queue.DeQueue();
+				if (deepestNode.Left != null)
+					queue.EnQueue(deepestNode.Left);
+				if (deepestNode.Right != null)
+					queue.EnQueue(deepestNode.Right);
+			}
+			return deepestNode;
+		}
+		public Node<T> DeepestNode()
+		{
+			var list = LevelOrderNonRecursive(Root);
+			return list[list.Count - 1];
+		}
 		public void ClearList() => list.Clear();
 	}
 }

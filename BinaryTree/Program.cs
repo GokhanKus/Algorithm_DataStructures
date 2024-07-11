@@ -10,7 +10,59 @@ namespace BinaryTree
 			//BSTApp1();
 			//BSTApp2();
 			//BSTApp3();
-			BSTApp4();
+			//BSTApp4();
+			//BSTApp5();
+			BSTApp6();
+		}
+
+		private static void BSTApp6()
+		{
+			var bt = new BinaryTree<char>();
+			bt.Root = new Node<char>('F');
+			bt.Root.Left = new Node<char>('A');
+			bt.Root.Right = new Node<char>('T');
+			bt.Root.Left.Left = new Node<char>('D');
+			var deepestNode = bt.DeepestNode();
+			var maxDepth = BinaryTree<char>.MaxDepth(bt.Root);
+			var nodes = bt.LevelOrderNonRecursive(bt.Root);
+			foreach (var node in nodes)
+			{
+				Console.Write($"{node,-3} ");
+			}
+			Console.WriteLine();
+			Console.WriteLine($"deeepest Node: {deepestNode}");
+			Console.WriteLine($"Max Depth: {maxDepth}");
+		}
+
+		private static void BSTApp5()
+		{
+			/*
+					15			depth:1
+					/ \			
+				   5   20		depth:2
+				       / \		
+					  17  65	depth:3
+						  /		
+						 48		depth:4 (Deepest Node: 48)
+			 */
+			byte[] values = { 15, 20, 17, 65, 5, 48 };
+			var bst = new BinarySearchTree<byte>(values);
+			var bt = new BinaryTree<byte>();
+
+			var deepestNode = bt.DeepestNode(bst.Root);
+			var maxDepth = BinaryTree<byte>.MaxDepth(bst.Root);
+			var list = new BinaryTree<byte>().InOrderNonRecursive(bst.Root);
+
+			foreach (var node in list)
+			{
+				Console.Write($"{node,-3} ");
+			}
+
+			Console.WriteLine();
+			Console.WriteLine($"Min value: {bst.FindMin(bst.Root)}");
+			Console.WriteLine($"Max value: {bst.FindMax(bst.Root)}");
+			Console.WriteLine($"Max Depth: {maxDepth}");
+			Console.WriteLine($"Deepest Node: {deepestNode}");
 		}
 
 		private static void BSTApp4()

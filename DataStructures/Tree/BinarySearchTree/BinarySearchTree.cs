@@ -34,7 +34,8 @@ namespace DataStructuresLibrary.Tree.BinarySearchTree
 				{
 					parent = current;
 					//sol-alt agac
-					if (value.CompareTo(current.Value) == -1) //-1 ise kucuk 0 ise esit 1 ise buyuktr
+					var asd = value.CompareTo(current.Value);
+					if (value.CompareTo(current.Value) < 0) //-1 ise kucuk 0 ise esit 1 ise buyuktr
 					{
 						current = current.Left;
 						if (current == null)
@@ -78,7 +79,7 @@ namespace DataStructuresLibrary.Tree.BinarySearchTree
 			//generic ifadelerde operator (=,<,>) kullanılmaz metot kullanilabilir
 			while (value.CompareTo(current.Value) != 0) //karsilastirmanin sonucu +1 donerse buyuk, 0 ise esit, -1 ise kucuktur
 			{
-				if (value.CompareTo(current.Value) == -1)
+				if (value.CompareTo(current.Value) < 0)
 					current = current.Left;
 				else //+1 ise yani buyukse..
 					current = current.Right;
