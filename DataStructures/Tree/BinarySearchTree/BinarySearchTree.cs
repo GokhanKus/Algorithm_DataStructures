@@ -116,7 +116,7 @@ namespace DataStructuresLibrary.Tree.BinarySearchTree
 		}
 		public IEnumerator<T> GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return new BinarySearchTreeEnumerator<T>(Root);
 		}
 		IEnumerator IEnumerable.GetEnumerator()
 		{

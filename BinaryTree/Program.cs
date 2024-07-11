@@ -21,7 +21,14 @@ namespace BinaryTree
 		{
 			var bst = new BinarySearchTree<int>(new int[] { 23, 16, 45, 3, 22, 37, 99, 101, 102, 34, 36 });
 			var bt = new BinaryTree<int>();
+			Console.WriteLine("from root to the leaves, paths;");
 			bt.PrintPaths(bst.Root);
+
+			Console.WriteLine("\nNodes (In Level Order:)");
+			foreach (var node in bst)
+			{
+				Console.WriteLine(node);
+			}
 
 			//from the root to the leaves paths:
 			/*

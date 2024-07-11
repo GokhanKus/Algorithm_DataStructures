@@ -3,7 +3,7 @@
   <Class Name="DataStructuresLibrary.Tree.BinaryTree.BinaryTree&lt;T&gt;">
     <Position X="7.75" Y="2.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAQwAAAAAAACBAgAgAACAEAQAAAAAAAAAIgAAAAAA=</HashCode>
+      <HashCode>AAgAQyAAAAAAACBQgAgACKAEAQAAAAAAAAAIgAAAAAA=</HashCode>
       <FileName>Tree\BinaryTree\BinaryTree.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -19,6 +19,14 @@
     <TypeIdentifier>
       <HashCode>AAIAAAAAAAAAADAAAAAABAAAAAAIAAAEAEAAABAAAAA=</HashCode>
       <FileName>Tree\BinarySearchTree\BinarySearchTree.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="DataStructuresLibrary.Tree.BinarySearchTree.BinarySearchTreeEnumerator&lt;T&gt;">
+    <Position X="11" Y="2.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAACAABAAAAACAAAAAAAAAAAAAoAAAAAAAAAQ=</HashCode>
+      <FileName>Tree\BinarySearchTree\BinarySearchTreeEnumerator.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>

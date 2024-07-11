@@ -215,7 +215,6 @@ namespace DataStructuresLibrary.Tree.BinaryTree
 			var path = new T[256];
 			PrintPaths(root, path, 0);
 		}
-
 		private void PrintPaths(Node<T> root, T[] path, int pathLen)
 		{
 			if (root == null) return;
@@ -232,7 +231,6 @@ namespace DataStructuresLibrary.Tree.BinaryTree
 			}
 
 		}
-
 		private void PrintArray(T[] path, int len)
 		{
 			for (int i = 0; i < len; i++)
