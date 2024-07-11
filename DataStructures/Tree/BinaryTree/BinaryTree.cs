@@ -198,6 +198,47 @@ namespace DataStructuresLibrary.Tree.BinaryTree
 			var numberOfLeaves = LevelOrderNonRecursive(root).Where(node => node.Left == null && node.Right == null).ToList().Count;
 			return numberOfLeaves;
 		}
+		public int NumberOfFullNodes(Node<T> root) //cocugu olan dugumlerin sayisi 2 veya 1 
+		{
+			var numberOfLeaves = LevelOrderNonRecursive(root).Where(node => node.Left != null && node.Right != null).ToList().Count;
+			return numberOfLeaves;
+		}
+		public int NumberOfHalfNodes(Node<T> root) //cocugu olan dugumlerin sayisi 2 veya 1 
+		{
+			var numberOfLeaves = LevelOrderNonRecursive(root)
+				.Where(node => (node.Left != null && node.Right == null) || node.Left == null && node.Right != null)
+				.ToList().Count;
+			return numberOfLeaves;
+		}
+		public void PrintPaths(Node<T> root)
+		{
+			var path = new T[256];
+			PrintPaths(root, path, 0);
+		}
+
+		private void PrintPaths(Node<T> root, T[] path, int pathLen)
+		{
+			if (root == null) return;
+
+			path[pathLen] = root.Value;
+			pathLen++;
+
+			if (root.Left is null && root.Right is null) //yaprak dugum mu?
+				PrintArray(path, pathLen);
+			else
+			{
+				PrintPaths(root.Left, path, pathLen);
+				PrintPaths(root.Right, path, pathLen);
+			}
+
+		}
+
+		private void PrintArray(T[] path, int len)
+		{
+			for (int i = 0; i < len; i++)
+				Console.Write($"{path[i]} ");
+			Console.WriteLine();
+		}
 		public void ClearList() => list.Clear();
 	}
 }

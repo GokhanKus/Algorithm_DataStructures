@@ -13,17 +13,37 @@ namespace BinaryTree
 			//BSTApp4();
 			//BSTApp5();
 			//BSTApp6();
-			BSTApp7();
+			//BSTApp7();
+			BSTApp8();
+		}
+
+		private static void BSTApp8()
+		{
+			var bst = new BinarySearchTree<int>(new int[] { 23, 16, 45, 3, 22, 37, 99, 101, 102, 34, 36 });
+			var bt = new BinaryTree<int>();
+			bt.PrintPaths(bst.Root);
+
+			//from the root to the leaves paths:
+			/*
+			23 16 3
+			23 16 22
+			23 45 37 34 36
+			23 45 99 101 102
+			*/
 		}
 
 		private static void BSTApp7()
 		{
-			var bst = new BinarySearchTree<int>(new int[] { 23, 16, 45, 3, 22, 37, 99 });
+			var bst = new BinarySearchTree<int>(new int[] { 23, 16, 45, 3, 22, 37, 99, 101, 102, 34, 36 });
 			var bt = new BinaryTree<int>();
 			var numberOfLeaves1 = bt.NumberOfLeaves1(bst.Root);
 			var numberOfLeaves2 = bt.NumberOfLeaves2(bst.Root);
+			var numberOfFullNodes = bt.NumberOfFullNodes(bst.Root);
+			var numberOfHalfNodes = bt.NumberOfHalfNodes(bst.Root);
 			Console.WriteLine($"number of leaves 1: {numberOfLeaves1}");
 			Console.WriteLine($"number of leaves 2: {numberOfLeaves2}");
+			Console.WriteLine($"Number of Full Nodes: {numberOfFullNodes}");
+			Console.WriteLine($"Number of Half Nodes: {numberOfHalfNodes}");
 		}
 
 		private static void BSTApp6()
