@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace DataStructuresLibrary.Heap
 {
-	public abstract class BinaryHeap<T> : IEnumerable<T> //foreach ile kullanmak istedigimiz icin IEnumerable ..
+	public abstract class BinaryHeap<T> : IEnumerable<T> where T : IComparable //foreach ile kullanmak istedigimiz icin IEnumerable ..
 	{
 		public T[] HeapArray { get; private set; }
 		public int Count { get; private set; }
-		private int position;
+		protected int position;
 		public BinaryHeap()
 		{
 			HeapArray = new T[128];
@@ -25,16 +25,26 @@ namespace DataStructuresLibrary.Heap
 			position = 0;
 			Count = 0;
 		}
+		public BinaryHeap(IEnumerable<T> collection)
+		{
+			HeapArray = new T[collection.Count()];
+			position = 0;
+			Count = 0;
+			foreach (var item in collection)
+			{
+				Add(item);
+			}
+		}
 		//0 based index, for tree; (lever ordered)
-		private int GetLeftChildIndex(int i) => i * 2 + 1;
-		private int GetRightChildIndex(int i) => i * 2 + 2;
-		private int GetParentIndex(int i) => (i - 1) / 2;
-		private bool HasLeftChild(int i) => GetLeftChildIndex(i) < position;
-		private bool HasRightChild(int i) => GetRightChildIndex(i) < position;
-		private bool IsRoot(int i) => i == 0; //i = 0 ise ilk elemandır yani koktur 
-		private T GetLeftChild(int i) => HeapArray[GetLeftChildIndex(i)];
-		private T GetRightChild(int i) => HeapArray[GetRightChildIndex(i)];
-		private T GetParent(int i) => HeapArray[GetParentIndex(i)];
+		protected int GetLeftChildIndex(int i) => i * 2 + 1;
+		protected int GetRightChildIndex(int i) => i * 2 + 2;
+		protected int GetParentIndex(int i) => (i - 1) / 2;
+		protected bool HasLeftChild(int i) => GetLeftChildIndex(i) < position;
+		protected bool HasRightChild(int i) => GetRightChildIndex(i) < position;
+		protected bool IsRoot(int i) => i == 0; //i = 0 ise ilk elemandır yani koktur 
+		protected T GetLeftChild(int i) => HeapArray[GetLeftChildIndex(i)];
+		protected T GetRightChild(int i) => HeapArray[GetRightChildIndex(i)];
+		protected T GetParent(int i) => HeapArray[GetParentIndex(i)];
 		public bool IsEmpty() => position == 0;
 		public T Peek() => IsEmpty() ? throw new Exception("Empty Heap!") : HeapArray[0];
 		public void Swap(int first, int second)
@@ -48,7 +58,7 @@ namespace DataStructuresLibrary.Heap
 			if (position == HeapArray.Length) throw new IndexOutOfRangeException("overflow!");
 			position++;
 			Count++;
-			//HeapifyUp(); yeni eklenen degerin son indexe eklendikten sonra min heap veya max heap yapisina uymuyorsa yukari dogru parentlerle yer degistiririz..
+			HeapifyUp(); //yeni eklenen degerin son indexe eklendikten sonra min heap veya max heap yapisina uymuyorsa yukari dogru parentlerle yer degistiririz..
 		}
 		public T DeleteMinMax()
 		{
@@ -57,7 +67,7 @@ namespace DataStructuresLibrary.Heap
 			HeapArray[0] = HeapArray[position - 1]; //son elemani koke yerlestiriyoruz
 			position--;
 			Count--;
-			//HeapifyDown(); min heap ve max heapte farklı calisacak (indisteki degerlerin yerlerini degistirerek min heap veya max heape gore duzenleyecegiz)
+			HeapifyDown(); //min heap ve max heapte farklı calisacak (indisteki degerlerin yerlerini degistirerek min heap veya max heape gore duzenleyecegiz)
 			return temp;
 		}
 		protected abstract void HeapifyUp();
