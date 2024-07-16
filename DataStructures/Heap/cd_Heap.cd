@@ -15,5 +15,12 @@
       <FileName>Heap\MinHeap.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="DataStructuresLibrary.Heap.MaxHeap&lt;T&gt;">
+    <Position X="7.5" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Heap\MaxHeap.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

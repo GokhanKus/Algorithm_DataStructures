@@ -36,6 +36,13 @@ namespace DataStructuresLibrary.Heap
 				Add(item);
 			}
 		}
+		public void AddRange(IEnumerable<T> collection)
+		{
+			foreach (var item in collection)
+			{
+				Add(item);
+			}
+		}
 		//0 based index, for tree; (lever ordered)
 		protected int GetLeftChildIndex(int i) => i * 2 + 1;
 		protected int GetRightChildIndex(int i) => i * 2 + 2;

@@ -32,7 +32,7 @@
 			}
 		}
 
-		protected override void HeapifyUp() //min heap agaz yapisinda son indise eklenen deger ve bu deger min heap yapisini bozabilir o yuzden yukarı yonlu swap (HeapifyUp)
+		protected override void HeapifyUp() //min heap agac yapisinda son indise eklenen deger ve bu deger min heap yapisini bozabilir o yuzden yukarı yonlu swap (HeapifyUp)
 		{
 			int index = position - 1; //son eklenen elemani temsil eder
 			while (!IsRoot(index) && HeapArray[index].CompareTo(GetParent(index)) < 0) //son eklenen deger parent'dan kucukse ve kok degilse..
