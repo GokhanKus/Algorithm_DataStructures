@@ -27,7 +27,8 @@ namespace DataStructuresLibrary.Heap
 		}
 		public BinaryHeap(IEnumerable<T> collection)
 		{
-			HeapArray = new T[collection.Count()];
+			HeapArray = new T[collection.Count()]; //boyle oldugu zaman statik olarak sabit sayida veri ekleniyor ve add fonksiyonu calismiyor o yuzden 128 yapildi
+			//HeapArray = new T[128];
 			position = 0;
 			Count = 0;
 			foreach (var item in collection)
@@ -47,7 +48,7 @@ namespace DataStructuresLibrary.Heap
 		protected T GetParent(int i) => HeapArray[GetParentIndex(i)];
 		public bool IsEmpty() => position == 0;
 		public T Peek() => IsEmpty() ? throw new Exception("Empty Heap!") : HeapArray[0];
-		public void Swap(int first, int second)
+		protected void Swap(int first, int second)
 		{
 			var temp = HeapArray[first];
 			HeapArray[first] = HeapArray[second];
@@ -56,6 +57,7 @@ namespace DataStructuresLibrary.Heap
 		public void Add(T value)
 		{
 			if (position == HeapArray.Length) throw new IndexOutOfRangeException("overflow!");
+			HeapArray[position] = value;
 			position++;
 			Count++;
 			HeapifyUp(); //yeni eklenen degerin son indexe eklendikten sonra min heap veya max heap yapisina uymuyorsa yukari dogru parentlerle yer degistiririz..
