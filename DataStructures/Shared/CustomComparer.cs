@@ -11,8 +11,8 @@
 		}
 		public int Compare(T? x, T? y)
 		{
-			return isMax == false ? compare(x, y) : compare(y, x);
+			return !isMax ? compare(x, y) : compare(y, x);
 		}
-		private int compare(T? x, T? y) => _comparer.Compare(x, y);
+		private int compare(T x, T y) => _comparer.Compare(x, y);
 	}
 }

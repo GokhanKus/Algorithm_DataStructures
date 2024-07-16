@@ -1,13 +1,32 @@
 ﻿using DataStructuresLibrary.Heap;
-
+using DataStructuresLibrary.Shared;
+using System.Reflection.Metadata.Ecma335;
 namespace BinaryHeap
 {
 	internal class Program
 	{
 		static void Main(string[] args)
 		{
-			BinaryHeapApp1();
+			//BinaryHeapApp1();
 			//BinaryHeapApp2();
+			BinaryHeapApp3();
+		}
+
+		private static void BinaryHeapApp3()
+		{
+			var minHeap = new BinaryHeap<int>(SortDirection.Ascending, new int[] { 54, 45, 36, 27, 29, 18, 21, 99 });
+            Console.WriteLine("Min heap:");
+            foreach (var item in minHeap)
+			{
+				Console.Write($"{item,-3}");
+			}
+            Console.WriteLine();
+            Console.WriteLine("Max heap:");
+			var maxHeap = new BinaryHeap<int>(SortDirection.Descending, new int[] { 54, 45, 36, 27, 29, 18, 21, 99 });
+			foreach (var item in maxHeap)
+			{
+				Console.Write($"{item,-3}");
+			}
 		}
 
 		private static void BinaryHeapApp2()

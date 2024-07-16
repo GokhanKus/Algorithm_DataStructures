@@ -39,9 +39,9 @@ namespace DataStructuresLibrary.Heap
 			Count = 0;
 			isMax = sortDirection == SortDirection.Descending;
 			if (comparer != null)
-				comparer = new CustomComparer<T>(sortDirection, comparer);
+				_comparer = new CustomComparer<T>(sortDirection, comparer);
 			else
-				comparer = new CustomComparer<T>(sortDirection, Comparer<T>.Default);
+				_comparer = new CustomComparer<T>(sortDirection, Comparer<T>.Default);
 			if (initial != null)
 			{
 				var items = initial as T[] ?? initial.ToArray();
@@ -53,29 +53,29 @@ namespace DataStructuresLibrary.Heap
 			}
 			else HeapArray = new T[128];
 		}
-		public BinaryHeap()
-		{
-			HeapArray = new T[128];
-			position = 0;
-			Count = 0;
-		}
-		public BinaryHeap(int _size)
-		{
-			HeapArray = new T[_size];
-			position = 0;
-			Count = 0;
-		}
-		public BinaryHeap(IEnumerable<T> collection)
-		{
-			HeapArray = new T[collection.Count()]; //boyle oldugu zaman statik olarak sabit sayida veri ekleniyor ve add fonksiyonu calismiyor o yuzden 128 yapildi
-												   //HeapArray = new T[128];
-			position = 0;
-			Count = 0;
-			foreach (var item in collection)
-			{
-				Add(item);
-			}
-		}
+		//public BinaryHeap()
+		//{
+		//	HeapArray = new T[128];
+		//	position = 0;
+		//	Count = 0;
+		//}
+		//public BinaryHeap(int _size)
+		//{
+		//	HeapArray = new T[_size];
+		//	position = 0;
+		//	Count = 0;
+		//}
+		//public BinaryHeap(IEnumerable<T> collection)
+		//{
+		//	HeapArray = new T[collection.Count()]; //boyle oldugu zaman statik olarak sabit sayida veri ekleniyor ve add fonksiyonu calismiyor o yuzden 128 yapildi
+		//										   //HeapArray = new T[128];
+		//	position = 0;
+		//	Count = 0;
+		//	foreach (var item in collection)
+		//	{
+		//		Add(item);
+		//	}
+		//}
 		public void AddRange(IEnumerable<T> collection)
 		{
 			foreach (var item in collection)
