@@ -3,24 +3,32 @@
   <Class Name="DataStructuresLibrary.Heap.BinaryHeap&lt;T&gt;">
     <Position X="2" Y="0.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAJBAAAAAAEECBIAAAAAYAQAAQEBAAAEAQAgAAQAAAg=</HashCode>
+      <HashCode>AAJBAAAAAAEECBIAAAAAYBQAAQEBAAAEAQAgAAQkAAg=</HashCode>
       <FileName>Heap\BinaryHeap.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="DataStructuresLibrary.Heap.MinHeap&lt;T&gt;">
-    <Position X="7.5" Y="1.75" Width="2" />
+    <Position X="6.75" Y="1.5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Heap\MinHeap.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="DataStructuresLibrary.Heap.MaxHeap&lt;T&gt;">
-    <Position X="7.5" Y="3.75" Width="2" />
+    <Position X="6.75" Y="4" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAQAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Heap\MaxHeap.cs</FileName>
     </TypeIdentifier>
+  </Class>
+  <Class Name="DataStructuresLibrary.Heap.BHeap&lt;T&gt;">
+    <Position X="11.75" Y="1.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAJBAAAAAAEECBIAAAAAYAQAAQEBAAAEAQAgAAQEAAg=</HashCode>
+      <FileName>Heap\BHeap.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

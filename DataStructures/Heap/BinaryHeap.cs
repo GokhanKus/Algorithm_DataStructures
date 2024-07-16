@@ -15,7 +15,7 @@ namespace DataStructuresLibrary.Heap
 		public int Count { get; private set; }
 		private int position;
 
-		private readonly IComparer<T>? _comparer;
+		private readonly IComparer<T> _comparer;
 		private readonly bool isMax;
 		public BinaryHeap(SortDirection sortDirection = SortDirection.Ascending) :
 			this(sortDirection, null, null) // user hic parametre vermediyse main ctora yonlendirelim
@@ -119,8 +119,35 @@ namespace DataStructuresLibrary.Heap
 			HeapifyDown(); //min heap ve max heapte farklı calisacak (indisteki degerlerin yerlerini degistirerek min heap veya max heape gore duzenleyecegiz)
 			return temp;
 		}
-		protected void HeapifyUp() { }
-		protected void HeapifyDown() { }
+		protected void HeapifyUp()
+		{
+			int index = position - 1; //son eklenen elemani temsil eder
+			while (!IsRoot(index) &&
+				_comparer.Compare(HeapArray[index], GetParent(index)) < 0) //HeapArray[index].CompareTo(GetParent(index)) < 0)
+			{
+				var parentIndex = GetParentIndex(index);
+				Swap(parentIndex, index);
+				index = parentIndex;
+			}
+		}
+		protected void HeapifyDown()
+		{
+			int index = 0;
+			while (HasLeftChild(index))
+			{
+				var smallerIndex = GetLeftChildIndex(index);
+				if (HasRightChild(index) &&
+					_comparer.Compare(GetRightChild(index), GetLeftChild(index)) < 0) //GetRightChild(index).CompareTo(GetLeftChild(index)) < 0) 
+				{
+					smallerIndex = GetRightChildIndex(index);//buraya girerse sag child ile girmezse sol child ile swaplenir alttaki swap() metodunda..
+				}
+				if (_comparer.Compare(HeapArray[smallerIndex], HeapArray[index]) >= 0) //if (HeapArray[smallerIndex].CompareTo(HeapArray[index]) >= 0)
+					break;
+
+				Swap(smallerIndex, index);
+				index = smallerIndex;
+			}
+		}
 		public IEnumerator<T> GetEnumerator() => HeapArray.Take(position).GetEnumerator();
 		IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 	}
