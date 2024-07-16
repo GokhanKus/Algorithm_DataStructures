@@ -6,8 +6,8 @@ namespace BinaryHeap
 	{
 		static void Main(string[] args)
 		{
-			//BinaryHeapApp1();
-			BinaryHeapApp2();
+			BinaryHeapApp1();
+			//BinaryHeapApp2();
 		}
 
 		private static void BinaryHeapApp2()

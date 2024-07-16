@@ -1,6 +1,6 @@
 ﻿namespace DataStructuresLibrary.Heap
 {
-	public class MinHeap<T> : BinaryHeap<T> where T : IComparable //no need to add IEnumerable<T> 'cause it's already added for BinaryHeap<T> class
+	public class MinHeap<T> : BHeap<T> where T : IComparable //no need to add IEnumerable<T> 'cause it's already added for BinaryHeap<T> class
 	{
 		public MinHeap() : base()
 		{

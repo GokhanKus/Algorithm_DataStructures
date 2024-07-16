@@ -1,6 +1,6 @@
 ﻿namespace DataStructuresLibrary.Heap
 {
-	public class MaxHeap<T> : BinaryHeap<T> where T : IComparable
+	public class MaxHeap<T> : BHeap<T> where T : IComparable
 	{
 		public MaxHeap() : base()
 		{
