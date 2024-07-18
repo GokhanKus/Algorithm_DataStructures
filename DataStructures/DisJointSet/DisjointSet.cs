@@ -24,9 +24,31 @@ namespace DataStructuresLibrary.DisJointSet
 		{
 			return value;
 		}
-		public void Union(T valueA, T valueB) //ayrik 2 seti birlestirme
+		public void Union(T valueA, T valueB) //ayrik 2 seti birlestirme union by rank(height)
 		{
+			//a'nin ve b'nin temsilcileri birbirinden farkliysa birlestirme islemi yapilabilir
+			var rootA = FindSet(valueA);
+			var rootB = FindSet(valueB);
 
+			if (rootA.Equals(rootB)) //2 node ayniysa zaten ayni set icerisindedir birlestirilecek bir sey yoktur
+				return;
+
+			var nodeA = set[rootA];
+			var nodeB = set[rootB];
+
+			if (nodeA.Rank == nodeB.Rank)
+			{
+				nodeB.Parent = nodeA;
+				nodeA.Rank++;
+			}
+			else
+			{
+				if (nodeA.Rank > nodeB.Rank)
+					nodeA.Parent = nodeB;
+
+				else
+					nodeB.Parent = nodeA;
+			}
 		}
 		public IEnumerator<T> GetEnumerator()
 		{
