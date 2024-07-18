@@ -15,16 +15,12 @@ namespace DataStructuresLibrary.DisJointSet
 		{
 
 		}
-		public DisjointSetNode(T value, int rank = 0)
+		public DisjointSetNode(T value)
 		{
 			Value = value;
-			Rank = rank;
+			Rank = 0;
+			Parent = this;
 		}
-		//public DisjointSetNode(T value)
-		//{
-		//	Value = value;
-		//	Rank = 0;
-		//}
 		public override string ToString()
 		{
 			return $"{Value}";

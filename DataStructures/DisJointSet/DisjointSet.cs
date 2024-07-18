@@ -9,7 +9,18 @@ namespace DataStructuresLibrary.DisJointSet
 {
 	public class DisjointSet<T> : IEnumerable<T>
 	{
-		private Dictionary<T, DisjointSetNode<T>> set = new Dictionary<T, DisjointSetNode<T>>();
+		private Dictionary<T, DisjointSetNode<T>> set;
+		public DisjointSet()
+		{
+			set = new Dictionary<T, DisjointSetNode<T>>();
+		}
+		public DisjointSet(IEnumerable<T> collection) : this()
+		{
+			foreach (var item in collection)
+			{
+				MakeSet(item);
+			}
+		}
 		public int Count { get; private set; }
 		public void MakeSet(T value) //ayrik set olusturma
 		{
@@ -25,8 +36,7 @@ namespace DataStructuresLibrary.DisJointSet
 			if (!set.ContainsKey(value))
 				throw new Exception("the value is not in the set");
 
-			var root = findset(set[value]).Value;
-			return root;
+			return findset(set[value]).Value;
 		}
 		private DisjointSetNode<T> findset(DisjointSetNode<T> node)
 		{
@@ -41,28 +51,28 @@ namespace DataStructuresLibrary.DisJointSet
 		}
 		public void Union(T valueA, T valueB) //ayrik 2 seti birlestirme union by rank(height)
 		{
-			//a'nin ve b'nin temsilcileri birbirinden farkliysa birlestirme islemi yapilabilir
+			// a'nın ve b'nin temsilcileri birbirinden farklıysa birleştirme işlemi yapılabilir
 			var rootA = FindSet(valueA);
 			var rootB = FindSet(valueB);
 
-			if (rootA.Equals(rootB)) //2 node ayniysa zaten ayni set icerisindedir birlestirilecek bir sey yoktur
+			if (rootA.Equals(rootB)) // 2 node aynıysa zaten aynı set içerisindedir, birleştirilecek bir şey yoktur
 				return;
 
 			var nodeA = set[rootA];  // rootA'nın node'unu al
-			var nodeB = set[rootB];  // rootB'nın node'unu al
+			var nodeB = set[rootB];  // rootB'nin node'unu al
 
-			if (nodeA.Rank == nodeB.Rank)
+			if (nodeA.Rank > nodeB.Rank)
 			{
-				nodeB.Parent = nodeA;
-				nodeA.Rank++;
+				nodeB.Parent = nodeA;  // nodeA'nın rank değeri büyükse, nodeA nodeB'nin ebeveyni olur
+			}
+			else if (nodeA.Rank < nodeB.Rank)
+			{
+				nodeA.Parent = nodeB;  // nodeB'nin rank değeri büyükse, nodeB nodeA'nın ebeveyni olur
 			}
 			else
 			{
-				if (nodeA.Rank > nodeB.Rank)
-					nodeA.Parent = nodeB;
-
-				else
-					nodeB.Parent = nodeA;
+				nodeB.Parent = nodeA;  // Rank değerleri eşitse, nodeB'nin ebeveyni nodeA olur
+				nodeA.Rank++;  // nodeA'nın rank değeri artırılır
 			}
 		}
 		public IEnumerator<T> GetEnumerator()
