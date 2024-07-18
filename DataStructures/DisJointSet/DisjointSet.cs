@@ -22,7 +22,22 @@ namespace DataStructuresLibrary.DisJointSet
 		}
 		public T FindSet(T value)
 		{
-			return value;
+			if (!set.ContainsKey(value))
+				throw new Exception("the value is not in the set");
+
+			var root = findset(set[value]).Value;
+			return root;
+		}
+		private DisjointSetNode<T> findset(DisjointSetNode<T> node)
+		{
+			var parent = node.Parent;
+			if (node != parent) //kok degilse koke kadar gidecegiz, yani kendisine esit olana kadar.. 
+			{
+				//path compression
+				node.Parent = findset(node.Parent);
+				return node.Parent;
+			}
+			return parent;
 		}
 		public void Union(T valueA, T valueB) //ayrik 2 seti birlestirme union by rank(height)
 		{
@@ -33,8 +48,8 @@ namespace DataStructuresLibrary.DisJointSet
 			if (rootA.Equals(rootB)) //2 node ayniysa zaten ayni set icerisindedir birlestirilecek bir sey yoktur
 				return;
 
-			var nodeA = set[rootA];
-			var nodeB = set[rootB];
+			var nodeA = set[rootA];  // rootA'nın node'unu al
+			var nodeB = set[rootB];  // rootB'nın node'unu al
 
 			if (nodeA.Rank == nodeB.Rank)
 			{
@@ -52,12 +67,12 @@ namespace DataStructuresLibrary.DisJointSet
 		}
 		public IEnumerator<T> GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return set.Values.Select(x => x.Value).GetEnumerator();
 		}
 
 		IEnumerator IEnumerable.GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return GetEnumerator();
 		}
 	}
 }
