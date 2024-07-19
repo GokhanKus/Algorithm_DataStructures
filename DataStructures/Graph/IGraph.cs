@@ -19,7 +19,7 @@
 	{
 		T Key { get; }
 		IEnumerable<IEdge<T>> Edges { get; }
-		IEdge<T> GetEdge(IVertex<T> vertex);
+		IEdge<T> GetEdge(IVertex<T> targetVertex);
 	}
 	public interface IEdge<T>  
 	{
