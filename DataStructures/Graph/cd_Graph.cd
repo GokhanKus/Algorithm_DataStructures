@@ -14,7 +14,7 @@
       </Class>
     </NestedTypes>
     <TypeIdentifier>
-      <HashCode>AAAEgAEAAAAAIBgAAAAAAAQBAAAAACAEAABAEAAAARA=</HashCode>
+      <HashCode>AAAEgAEAAAAAIBgAiAAAAAQBAQAAACAEAABAEAAAARA=</HashCode>
       <FileName>Graph\AdjacencySet\Graph.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -27,8 +27,27 @@
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="DataStructuresLibrary.Graph.AdjacencySet.WeightedGraph&lt;T, TW&gt;">
+    <Position X="11.5" Y="0.5" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="DataStructuresLibrary.Graph.AdjacencySet.WeightedGraph&lt;T, TW&gt;.WeightedVertex&lt;T, TW&gt;">
+        <TypeIdentifier>
+          <NewMemberFileName>Graph\AdjacencySet\WeightedGraph.cs</NewMemberFileName>
+        </TypeIdentifier>
+        <Lollipop Position="0.2" />
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAEgAEAAAAAIBgAAAAAAAQBAAAAACAEAABAEAAAARA=</HashCode>
+      <FileName>Graph\AdjacencySet\WeightedGraph.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="DataStructuresLibrary.Graph.IGraph&lt;T&gt;">
-    <Position X="4.25" Y="0.75" Width="2" />
+    <Position X="6" Y="1.75" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAEgAEAAAAAIAgAAAAAAAQBAAAAACAAAABAEAAAARA=</HashCode>
       <FileName>Graph\IGraph.cs</FileName>
