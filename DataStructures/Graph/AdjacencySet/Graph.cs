@@ -30,7 +30,7 @@ namespace DataStructuresLibrary.Graph.AdjacencySet
 		public void AddVertex(T key)
 		{
 			if (key == null) throw new ArgumentNullException();
-			var newVertex = new Vertex<T>();
+			var newVertex = new Vertex<T>(key);
 			vertexes.Add(key, newVertex);
 		}
 		IGraph<T> IGraph<T>.Clone() => Clone();
@@ -107,7 +107,12 @@ namespace DataStructuresLibrary.Graph.AdjacencySet
 		private class Vertex<T> : IVertex<T>
 		{
 			public T Key { get; set; }
-			public HashSet<Vertex<T>> Edges = new HashSet<Vertex<T>>();
+			public HashSet<Vertex<T>> Edges { get; private set; }
+			public Vertex(T key)
+			{
+				Key = key;
+				Edges = new HashSet<Vertex<T>>();
+			}
 			IEnumerable<IEdge<T>> IVertex<T>.Edges => Edges.Select(x => new Edge<T, int>(x, 1));
 			public IEdge<T> GetEdge(IVertex<T> targetVertex)
 			{
