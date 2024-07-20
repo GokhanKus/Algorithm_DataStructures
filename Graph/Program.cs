@@ -22,6 +22,11 @@ namespace Graph
 			graph.AddEdge('E', 'F');
 			graph.AddEdge('F', 'G'); //boyle de kenar eklenir
 
+			var vertexD = graph.GetVertex('D');
+			foreach (var neighbourVertex in vertexD)
+			{
+				Console.WriteLine(neighbourVertex); 
+			}
 			//key = vertexlerin degeri 'A', 'B' gibi.. hangi dugum hangisiyle iliskili (has edge? between two vertex)
 			foreach (var key in graph)
 			{

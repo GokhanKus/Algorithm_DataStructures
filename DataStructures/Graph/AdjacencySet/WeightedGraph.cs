@@ -55,20 +55,24 @@ namespace DataStructuresLibrary.Graph.AdjacencySet
 		}
 		private class WeightedVertex<T, TW> : IVertex<T> where TW : IComparable
 		{
-			public T Key => throw new NotImplementedException();
-			public IEnumerable<IEdge<T>> Edges => throw new NotImplementedException();
+			public T Key { get; set; }
+			public Dictionary<WeightedVertex<T, TW>, TW> Edges;
+			public WeightedVertex(T key)
+			{
+				Key = key;
+				Edges = new Dictionary<WeightedVertex<T, TW>, TW>();
+			}
+			IEnumerable<IEdge<T>> IVertex<T>.Edges => Edges.Select(x => new Edge<T, TW>(x.Key, x.Value));
 			public IEdge<T> GetEdge(IVertex<T> targetVertex)
 			{
-				throw new NotImplementedException();
+				TW typeWeight = Edges[targetVertex as WeightedVertex<T, TW>];
+				return new Edge<T, TW>(targetVertex, typeWeight); //ilgili kenari alirken hedef vertex ve agirligiyla beraber aliyoruz
 			}
 			public IEnumerator<T> GetEnumerator()
 			{
-				throw new NotImplementedException();
+				return Edges.Select(x => x.Key.Key).GetEnumerator(); //x.Key dictionary'nin, 2. key ise prop'taki T Key ifadesine karsilik geliyor
 			}
-			IEnumerator IEnumerable.GetEnumerator()
-			{
-				throw new NotImplementedException();
-			}
+			IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 		}
 	}
 }
