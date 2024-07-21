@@ -1,4 +1,6 @@
-﻿using DataStructuresLibrary.Graph.AdjacencySet;
+﻿using DataStructuresLibrary.Graph;
+using DataStructuresLibrary.Graph.AdjacencySet;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Graph
@@ -7,10 +9,52 @@ namespace Graph
 	{
 		static void Main(string[] args)
 		{
-			//GraphApp1();
-			GraphApp2();
+			//GraphApp();
+			//WeightedGraphApp();
+			DirectedGraphApp();
 		}
-		private static void GraphApp2()
+		private static void DirectedGraphApp()
+		{
+			List<char> vertexes = new List<char>() { 'A', 'B', 'C', 'D', 'E' };
+			var directedGraph = new DirectedGraph<char>(vertexes);
+
+			directedGraph.AddEdge('A', 'D');
+			directedGraph.AddEdge('B', 'A');
+			directedGraph.AddEdge('C', 'A');
+			directedGraph.AddEdge('C', 'B');
+			directedGraph.AddEdge('C', 'D');
+			directedGraph.AddEdge('C', 'E');
+			directedGraph.AddEdge('D', 'E');
+
+			directedGraph.RemoveVertex('C');
+			//directedGraph.RemoveEdge('A', 'D');
+			//directedGraph.RemoveEdge('C', 'D');
+			//directedGraph.RemoveEdge('D', 'E');
+			//directedGraph.RemoveVertex('D');
+
+			foreach (var key in directedGraph) //key = 'A' ,'B' etc..
+			{
+				Console.Write($"{key} => ");
+				//ilgili dugum uzerindeyken hangi dugumu / dugumleri isaret ediyor(yonlu oldugu dugumler)
+				foreach (var pointedVertex in directedGraph.GetVertex(key)) //(directedGraph.Edges(key)
+				{
+					Console.Write($"   {pointedVertex}");
+				}
+				Console.WriteLine();
+			}
+
+			Console.WriteLine("is there an edge between A and B ? {0}", directedGraph.HasEdge('A', 'B') ? "Yes" : "No!");
+			Console.WriteLine("is there an edge between B and A ? {0}", directedGraph.HasEdge('B', 'A') ? "Yes" : "No!");
+
+			//Console.WriteLine("is there an edge between B and C ? {0}", directedGraph.HasEdge('B', 'C') ? "Yes" : "No!");
+			//Console.WriteLine("is there an edge between C and B ? {0}", directedGraph.HasEdge('C', 'B') ? "Yes" : "No!");
+
+			Console.WriteLine("is there an edge between A and E ? {0}", directedGraph.HasEdge('A', 'E') ? "Yes" : "No!");
+			Console.WriteLine("is there an edge between E and A ? {0}", directedGraph.HasEdge('E', 'A') ? "Yes" : "No!");
+
+			Console.WriteLine($"the number of vertexes: {directedGraph.Count}");
+		}
+		private static void WeightedGraphApp()
 		{
 			var weightedGraph = new WeightedGraph<char, double>(new char[] { 'A', 'B', 'C', 'D' });
 			weightedGraph.AddVertex('E');
@@ -47,7 +91,7 @@ namespace Graph
 
 			Console.WriteLine($"the number of vertex: {weightedGraph.Count}");
 		}
-		private static void GraphApp1()
+		private static void GraphApp()
 		{
 			char[] vertexes = { 'A', 'B', 'C', 'D', 'E', 'F', 'G' };
 			var graph = new Graph<char>(vertexes);
@@ -59,6 +103,9 @@ namespace Graph
 			graph.AddEdge(vertexes[3], vertexes[4]);
 			graph.AddEdge('E', 'F');
 			graph.AddEdge('F', 'G'); //boyle de kenar eklenir
+
+			//graph.RemoveVertex('A');
+			//graph.RemoveEdge('E','F');
 
 			var vertexD = graph.GetVertex('D');
 			foreach (var neighbourVertex in vertexD)
