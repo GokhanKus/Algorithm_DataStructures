@@ -1,59 +1,117 @@
 ﻿using System.Collections;
+using System.Linq;
 
 namespace DataStructuresLibrary.Graph.AdjacencySet
 {
 	public class DirectedGraph<T> : IDirectedGraph<T>
 	{
-		public IDirectedVertex<T> ReferenceVertex => throw new NotImplementedException();
-		public IEnumerable<IDirectedVertex<T>> VertexesAsEnumerable => throw new NotImplementedException();
-		public bool IsWeightedGraph => throw new NotImplementedException();
-		public int Count => throw new NotImplementedException();
-		IVertex<T> IGraph<T>.ReferenceVertex => throw new NotImplementedException();
-		IEnumerable<IVertex<T>> IGraph<T>.VertexesAsEnumerable => throw new NotImplementedException();
+		public DirectedGraph()
+		{
+			vertexes = new Dictionary<T, DirectedVertex<T>>();
+		}
+		public DirectedGraph(IEnumerable<T> collection)
+		{
+			vertexes = new Dictionary<T, DirectedVertex<T>>();
+			foreach (var item in collection)
+			{
+				AddVertex(item);
+			}
+		}
+		private Dictionary<T, DirectedVertex<T>> vertexes;
+		public IDirectedVertex<T> ReferenceVertex => vertexes[this.First()];
+		IVertex<T> IGraph<T>.ReferenceVertex => ReferenceVertex; // as IVertex<T>; 
+		public IEnumerable<IDirectedVertex<T>> VertexesAsEnumerable => vertexes.Select(X => X.Value);
+		IEnumerable<IVertex<T>> IGraph<T>.VertexesAsEnumerable => VertexesAsEnumerable; // as IEnumerable<IVertex<T>>;
+		public bool IsWeightedGraph => false;
+		public int Count => vertexes.Count;
 		public void AddVertex(T key)
 		{
-			throw new NotImplementedException();
+			if (key == null) throw new ArgumentNullException();
+			var newVertex = new DirectedVertex<T>(key);
+			vertexes.Add(key, newVertex);
 		}
-		public IGraph<T> Clone()
+		public void AddEdge(T source, T dest)
 		{
-			throw new NotImplementedException();
+			if (source == null || dest == null)
+				throw new ArgumentNullException();
+
+			if (!vertexes.ContainsKey(source) || !vertexes.ContainsKey(dest))
+				throw new ArgumentException("source or destination vertex is not in the graph.");
+
+			if (vertexes[source].OutEdges.Contains(vertexes[dest]) || vertexes[dest].InEdges.Contains(vertexes[source]))
+				throw new Exception("the edge has been already defined!");
+
+			vertexes[source].OutEdges.Add(vertexes[dest]);
+			vertexes[dest].InEdges.Add(vertexes[source]);
 		}
-		public bool ContainsVertex(T key)
+		IGraph<T> IGraph<T>.Clone()
 		{
-			throw new NotImplementedException();
+			return Clone();
 		}
+		public DirectedGraph<T> Clone()
+		{
+			var graph = new DirectedGraph<T>();
+
+			foreach (var vertex in vertexes)
+				graph.AddVertex(vertex.Key);
+
+			foreach (var vertex in vertexes)
+				foreach (var node in vertex.Value.OutEdges)
+					graph.AddEdge(vertex.Value.Key, node.Key);
+
+			return graph;
+		}
+		public bool ContainsVertex(T key) => vertexes.ContainsKey(key);
 		public IEnumerable<T> Edges(T key)
 		{
-			throw new NotImplementedException();
+			if (key == null) throw new ArgumentNullException();
+			return vertexes[key].OutEdges.Select(x => x.Key);
 		}
-		public IEnumerator<T> GetEnumerator()
-		{
-			throw new NotImplementedException();
-		}
-		public IDirectedVertex<T> GetVertex(T key)
-		{
-			throw new NotImplementedException();
-		}
+		public IDirectedVertex<T> GetVertex(T key) => vertexes[key];
+		IVertex<T> IGraph<T>.GetVertex(T key) => GetVertex(key);// as IVertex<T>;
 		public bool HasEdge(T source, T dest)
 		{
-			throw new NotImplementedException();
+			if (source == null || dest == null)
+				throw new ArgumentNullException();
+
+			if (!vertexes.ContainsKey(source) || !vertexes.ContainsKey(dest))
+				throw new ArgumentException("source or destination vertex is not in the graph.");
+
+			return vertexes[source].OutEdges.Contains(vertexes[dest]) && //a dugumunun kenari b dugumunu iceriyorsa 
+				vertexes[dest].InEdges.Contains(vertexes[source]);      //b dugumunun kenari a dugumunu iceriyorsa 
 		}
 		public void RemoveEdge(T source, T dest)
 		{
-			throw new NotImplementedException();
+			if (source == null || dest == null)
+				throw new ArgumentNullException();
+
+			if (!vertexes.ContainsKey(source) || !vertexes.ContainsKey(dest))
+				throw new ArgumentException("source or destination vertex is not in the graph.");
+
+			if (!vertexes[source].OutEdges.Contains(vertexes[dest]) || !vertexes[dest].InEdges.Contains(vertexes[source]))
+				throw new Exception("the edge has been already defined!");
+
+			vertexes[source].OutEdges.Remove(vertexes[dest]);
+			vertexes[dest].InEdges.Remove(vertexes[source]);
 		}
 		public void RemoveVertex(T key)
 		{
-			throw new NotImplementedException();
+			if (key == null) throw new ArgumentNullException();
+			if (!vertexes.ContainsKey(key)) throw new ArgumentException("the vertex is not in this graph.");
+
+			foreach (var vertex in vertexes[key].OutEdges) //dugumle ilgili olan kenarlari kaldiralim
+				vertex.OutEdges.Remove(vertexes[key]);
+
+			foreach (var vertex in vertexes[key].InEdges) //dugumle ilgili olan kenarlari kaldiralim
+				vertex.InEdges.Remove(vertexes[key]);
+
+			vertexes.Remove(key);
 		}
-		IEnumerator IEnumerable.GetEnumerator()
+		public IEnumerator<T> GetEnumerator()
 		{
-			throw new NotImplementedException();
+			return vertexes.Select(x => x.Key).GetEnumerator();
 		}
-		IVertex<T> IGraph<T>.GetVertex(T key)
-		{
-			throw new NotImplementedException();
-		}
+		IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 		private class DirectedVertex<T> : IDirectedVertex<T>
 		{
 			public HashSet<DirectedVertex<T>> OutEdges { get; private set; }
