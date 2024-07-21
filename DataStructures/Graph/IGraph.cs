@@ -45,6 +45,6 @@ namespace DataStructuresLibrary.Graph
 	}
 	public interface IDirectedEdge<T> : IEdge<T>
 	{
-		new IDirectedGraph<T> TargetVertex { get; }
+		new IDirectedVertex<T> TargetVertex { get; }
 	}
 }
