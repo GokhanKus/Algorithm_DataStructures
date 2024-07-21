@@ -39,7 +39,7 @@ namespace DataStructuresLibrary.Graph
 	{
 		IDirectedEdge<T> GetOutEdge(IDirectedVertex<T> targetVertex);
 		IEnumerable<IDirectedEdge<T>> OutEdges { get; }
-		IEnumerable<IDirectedEdge<T>> InEdged { get; }
+		IEnumerable<IDirectedEdge<T>> InEdges { get; }
 		int OutEdgesCount { get; }
 		int InEdgesCount { get; }
 	}

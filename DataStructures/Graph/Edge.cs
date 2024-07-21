@@ -29,6 +29,11 @@ namespace DataStructuresLibrary.Graph
 	{
 		private object _weight;
 		public IDirectedVertex<T> TargetVertex { get; private set; }
+		public DirectedEdge(IDirectedVertex<T> target, TW weight)
+		{
+			_weight = weight;
+			TargetVertex = target;
+		}
 		public T TargetVertexKey => TargetVertex.Key;
 		IVertex<T> IEdge<T>.TargetVertex => TargetVertex as IVertex<T>;
 		public W Weight<W>() where W : IComparable
