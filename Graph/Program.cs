@@ -11,8 +11,44 @@ namespace Graph
 		{
 			//GraphApp();
 			//WeightedGraphApp();
-			DirectedGraphApp();
+			//DirectedGraphApp();
+			DirectedWeightedGraphApp();
 		}
+
+		private static void DirectedWeightedGraphApp()
+		{
+			List<char> vertexes = new List<char>() { 'A', 'B', 'C', 'D', 'E' };
+			var weigtedDiGraph = new WeightedDirectedGraph<char, int>(vertexes);
+
+			weigtedDiGraph.AddEdge('A', 'D', 60);
+			weigtedDiGraph.AddEdge('A', 'C', 12);
+			weigtedDiGraph.AddEdge('B', 'A', 10);
+			weigtedDiGraph.AddEdge('C', 'B', 20);
+			weigtedDiGraph.AddEdge('C', 'D', 32);
+			weigtedDiGraph.AddEdge('E', 'A', 7);
+
+			foreach (var key in weigtedDiGraph.VertexesAsEnumerable)
+			{
+				Console.Write($"{key.Key} => ");
+				foreach (var item in key.OutEdges)
+				{
+					Console.Write($"  {key.Key}--{item.Weight<int>()}-->{item}"); 
+				}
+				Console.WriteLine();
+			}
+			Console.WriteLine("is there an edge between A and B ? {0}", weigtedDiGraph.HasEdge('A', 'B') ? "Yes" : "No!");
+			Console.WriteLine("is there an edge between B and A ? {0}", weigtedDiGraph.HasEdge('B', 'A') ? "Yes" : "No!");
+
+			Console.WriteLine("is there an edge between B and C ? {0}", weigtedDiGraph.HasEdge('B', 'C') ? "Yes" : "No!");
+			Console.WriteLine("is there an edge between C and B ? {0}", weigtedDiGraph.HasEdge('C', 'B') ? "Yes" : "No!");
+
+			Console.WriteLine("is there an edge between A and E ? {0}", weigtedDiGraph.HasEdge('A', 'E') ? "Yes" : "No!");
+			Console.WriteLine("is there an edge between E and A ? {0}", weigtedDiGraph.HasEdge('E', 'A') ? "Yes" : "No!");
+
+			Console.WriteLine($"the number of vertexes: {weigtedDiGraph.Count}");
+
+		}
+
 		private static void DirectedGraphApp()
 		{
 			List<char> vertexes = new List<char>() { 'A', 'B', 'C', 'D', 'E' };
