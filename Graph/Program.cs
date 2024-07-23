@@ -1,5 +1,6 @@
 ﻿using DataStructuresLibrary.Graph;
 using DataStructuresLibrary.Graph.AdjacencySet;
+using DataStructuresLibrary.Graph.Search;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
@@ -12,7 +13,32 @@ namespace Graph
 			//GraphApp();
 			//WeightedGraphApp();
 			//DirectedGraphApp();
-			DirectedWeightedGraphApp();
+			//DirectedWeightedGraphApp();
+			DepthFirstSearchApp();
+		}
+
+		private static void DepthFirstSearchApp()
+		{
+			var graph = new Graph<int>(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 });
+
+			graph.AddEdge(0, 1);
+			graph.AddEdge(1, 4);
+			graph.AddEdge(0, 4);
+			graph.AddEdge(0, 2);
+			graph.AddEdge(2, 5);
+			graph.AddEdge(2, 10);
+			graph.AddEdge(10,11);
+			graph.AddEdge(11, 9);
+			graph.AddEdge(2, 9);
+			graph.AddEdge(5, 7);
+			graph.AddEdge(7, 8);
+			graph.AddEdge(5, 8);
+			graph.AddEdge(5, 6);
+
+			var algorithm = new DepthFirst<int>();
+			bool isFind = algorithm.Find(graph, 5);
+
+			Console.WriteLine("the vertex in the list is found ? {0}", isFind ? "Yes" : "No!");
 		}
 
 		private static void DirectedWeightedGraphApp()
@@ -32,7 +58,7 @@ namespace Graph
 				Console.Write($"{key.Key} => ");
 				foreach (var item in key.OutEdges)
 				{
-					Console.Write($"  {key.Key}--{item.Weight<int>()}-->{item}"); 
+					Console.Write($"  {key.Key}--{item.Weight<int>()}-->{item}");
 				}
 				Console.WriteLine();
 			}
