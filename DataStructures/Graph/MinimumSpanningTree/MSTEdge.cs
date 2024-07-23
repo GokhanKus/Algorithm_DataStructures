@@ -23,7 +23,7 @@ namespace DataStructuresLibrary.Graph.MinimumSpanningTree
 		}
 		public override string ToString()
 		{
-			return $"{Source} - {Destination} - {Weight}";
+			return $"{Source} - {Destination} - W: {Weight}";
 		}
 	}
 }
