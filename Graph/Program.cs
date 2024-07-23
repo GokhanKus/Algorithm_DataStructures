@@ -1,5 +1,6 @@
 ﻿using DataStructuresLibrary.Graph;
 using DataStructuresLibrary.Graph.AdjacencySet;
+using DataStructuresLibrary.Graph.MinimumSpanningTree;
 using DataStructuresLibrary.Graph.Search;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
@@ -15,7 +16,41 @@ namespace Graph
 			//DirectedGraphApp();
 			//DirectedWeightedGraphApp();
 			//DepthFirstSearchApp();
-			BreadthFirstSearchApp();
+			//BreadthFirstSearchApp();
+			MinimumSpanningTreePrimsApp();
+		}
+
+		private static void MinimumSpanningTreePrimsApp()
+		{
+			var graph = new WeightedGraph<int, int>(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8 });
+
+			graph.AddEdge(0, 1, 4);
+			graph.AddEdge(0, 7, 8);
+			graph.AddEdge(1, 7, 11);
+			graph.AddEdge(1, 2, 8);
+			graph.AddEdge(2, 3, 7);
+			graph.AddEdge(2, 5, 4);
+			graph.AddEdge(2, 8, 2);
+			graph.AddEdge(3, 4, 9);
+			graph.AddEdge(3, 5, 14);
+			graph.AddEdge(4, 5, 10);
+			graph.AddEdge(5, 6, 2);
+			graph.AddEdge(6, 7, 1);
+			graph.AddEdge(7, 8, 7);
+			graph.AddEdge(8, 6, 6);
+
+			var algorithm = new Prims<int, int>();
+			var list = algorithm.FindMinimumSpanningTree(graph);
+			int minCost = 0;
+			foreach (var vertex in list)
+			{
+				Console.WriteLine($"{vertex}");
+				minCost += vertex.Weight;
+			}
+			Console.WriteLine($"minimum spanning tree min cost: {minCost}");
+
+			//var algorithm = new Prims<int, int>();
+			//algorithm.FindMinimumSpanningTree(graph).ForEach(edge => Console.WriteLine(edge)); //edgeler kaldirilabilir
 		}
 
 		private static void BreadthFirstSearchApp()
