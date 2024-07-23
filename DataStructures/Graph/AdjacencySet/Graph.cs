@@ -120,6 +120,14 @@ namespace DataStructuresLibrary.Graph.AdjacencySet
 			{
 				return GetEnumerator();
 			}
+			public override string ToString()
+			{
+				return $"{Key}";
+			}
 		}
+	}
+	public class Asdd
+	{
+
 	}
 }

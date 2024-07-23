@@ -14,9 +14,34 @@ namespace Graph
 			//WeightedGraphApp();
 			//DirectedGraphApp();
 			//DirectedWeightedGraphApp();
-			DepthFirstSearchApp();
+			//DepthFirstSearchApp();
+			BreadthFirstSearchApp();
 		}
 
+		private static void BreadthFirstSearchApp()
+		{
+			var graph = new Graph<int>(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 });
+
+			graph.AddEdge(0, 1);
+			graph.AddEdge(1, 4);
+			graph.AddEdge(0, 4);
+			graph.AddEdge(0, 2);
+			graph.AddEdge(2, 5);
+			graph.AddEdge(2, 10);
+			graph.AddEdge(10, 11);
+			graph.AddEdge(11, 9);
+			graph.AddEdge(2, 9);
+			graph.AddEdge(5, 7);
+			graph.AddEdge(7, 8);
+			graph.AddEdge(5, 8);
+			graph.AddEdge(5, 6);
+
+			//level order dolasir agac yapisi gibi
+			var algorithm = new BreadthFirst<int>();
+			bool isFind = algorithm.Find(graph, 5);
+
+			Console.WriteLine("the vertex in the list is found ? {0}", isFind ? "Yes" : "No!");
+		}
 		private static void DepthFirstSearchApp()
 		{
 			var graph = new Graph<int>(new int[] { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 });
@@ -27,7 +52,7 @@ namespace Graph
 			graph.AddEdge(0, 2);
 			graph.AddEdge(2, 5);
 			graph.AddEdge(2, 10);
-			graph.AddEdge(10,11);
+			graph.AddEdge(10, 11);
 			graph.AddEdge(11, 9);
 			graph.AddEdge(2, 9);
 			graph.AddEdge(5, 7);
@@ -35,12 +60,12 @@ namespace Graph
 			graph.AddEdge(5, 8);
 			graph.AddEdge(5, 6);
 
+			//pre order dolasir agac yapisi gibi
 			var algorithm = new DepthFirst<int>();
-			bool isFind = algorithm.Find(graph, 5);
+			bool isFind = algorithm.Find(graph, 23);
 
 			Console.WriteLine("the vertex in the list is found ? {0}", isFind ? "Yes" : "No!");
 		}
-
 		private static void DirectedWeightedGraphApp()
 		{
 			List<char> vertexes = new List<char>() { 'A', 'B', 'C', 'D', 'E' };
@@ -74,7 +99,6 @@ namespace Graph
 			Console.WriteLine($"the number of vertexes: {weigtedDiGraph.Count}");
 
 		}
-
 		private static void DirectedGraphApp()
 		{
 			List<char> vertexes = new List<char>() { 'A', 'B', 'C', 'D', 'E' };
