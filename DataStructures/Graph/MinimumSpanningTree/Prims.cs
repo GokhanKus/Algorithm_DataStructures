@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DataStructuresLibrary.Graph.MinimumSpanningTree
 {
-	public class Prims<T, TW> where T : IComparable where TW : IComparable
+	public class Prims<T, TW> where TW : IComparable //where T : IComparable
 	{
 		public List<MSTEdge<T, TW>> FindMinimumSpanningTree(IGraph<T> graph)
 		{
@@ -25,8 +25,9 @@ namespace DataStructuresLibrary.Graph.MinimumSpanningTree
 					var e = new MSTEdge<T, TW>(currentVertex.Key, edge.TargetVertexKey, edge.Weight<TW>());
 					spNeighbours.Add(e); //binaryheap add metodu min heape gore eklenecek
 				}
+				//DeleteMinMax metodunda elde edilen sonuclarin toplami min edgeye atildiktan sonra spedges'e ekleniyor ve bu bizim sonucumuz oluyor
 				var minEdge = spNeighbours.DeleteMinMax();
-				//var olan kenarlari dikkate alma
+				//var olan kenarlari (kesfedilmis kenarlari) dikkate almayalim
 				while (spVertexes.Contains(minEdge.Source) && spVertexes.Contains(minEdge.Destination))
 				{
 					minEdge = spNeighbours.DeleteMinMax();
