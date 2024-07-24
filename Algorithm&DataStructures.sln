@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinaryHeap", "BinaryHeap\Bi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DisjointSet", "DisjointSet\DisjointSet.csproj", "{5CB8DD3C-8010-4373-83C3-AB91D6D0A0F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Graph", "Graph\Graph.csproj", "{6532D056-7ED2-4998-A9FA-BB15351068BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Graph", "Graph\Graph.csproj", "{6532D056-7ED2-4998-A9FA-BB15351068BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SortingAlgorithm", "SortingAlgorithm\SortingAlgorithm.csproj", "{5B14BB63-BD26-4F61-8BE3-C8CC8A0CDD6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{6532D056-7ED2-4998-A9FA-BB15351068BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6532D056-7ED2-4998-A9FA-BB15351068BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6532D056-7ED2-4998-A9FA-BB15351068BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B14BB63-BD26-4F61-8BE3-C8CC8A0CDD6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B14BB63-BD26-4F61-8BE3-C8CC8A0CDD6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B14BB63-BD26-4F61-8BE3-C8CC8A0CDD6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B14BB63-BD26-4F61-8BE3-C8CC8A0CDD6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
