@@ -21,7 +21,7 @@ namespace DataStructuresLibrary.Graph.MinimumSpanningTree
 			foreach (var edge in edges)
 				heap.Add(edge);
 
-			//Heapsort
+			//Heapsort weighte gore kucukten buyuge siralayip sortedEdgeye aldik (source dest weight bilgilerini
 			var sortedEdgeArr = new MSTEdge<T, TW>[edges.Count];
 			for (int i = 0; i < edges.Count; i++)
 				sortedEdgeArr[i] = heap.DeleteMinMax();
