@@ -10,7 +10,20 @@ namespace SortingAlgorithm
 			//SelectionSortApp();
 			//BubbleSortApp();
 			//InsertionApp();
-			QuickSortApp();
+			//QuickSortApp();
+			MergeSortApp();
+		}
+
+		private static void MergeSortApp()
+		{
+			byte[] arr = { 10, 5, 15, 25, 0, 15, 75, 20 };
+
+			MergeSort.Sort(arr);
+			foreach (int i in arr)
+			{
+				Console.Write(i + "  ");
+			}
+			Console.WriteLine();
 		}
 
 		private static void QuickSortApp()
