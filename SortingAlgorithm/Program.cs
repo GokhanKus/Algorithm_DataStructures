@@ -9,8 +9,21 @@ namespace SortingAlgorithm
 		{
 			//SelectionSortApp();
 			//BubbleSortApp();
-			InsertionApp();
+			//InsertionApp();
+			QuickSortApp();
 		}
+
+		private static void QuickSortApp()
+		{
+			int[] arr = { 10, 5, 15, 25, 0, 15, 75, 20 };
+			
+			QuickSort.Sort(arr);
+			foreach (int i in arr)
+			{
+				Console.Write(i + "  ");
+			}
+            Console.WriteLine();
+        }
 
 		private static void InsertionApp()
 		{
