@@ -3,7 +3,9 @@ using DataStructures.Array;
 using DataStructuresLibrary.Heap;
 using DataStructuresLibrary.LinkedList.SinglyLinkedList;
 using DataStructuresLibrary.Shared;
+using DataStructuresLibrary.SortingAlgorithm;
 using DataStructuresLibrary.Tree.BinarySearchTree;
+using System.Collections.Immutable;
 
 namespace CustomTypesApp
 {
@@ -27,9 +29,23 @@ namespace CustomTypesApp
 			//CustomTypeApp2();
 			//CustomTypeApp3();
 			//CustomTypeApp4();
-			CustomTypeApp5();
+			//CustomTypeApp5();
+			CustomTypeApp6();
 		}
+		private static void CustomTypeApp6()
+		{
+			//GPA'ya gore siralar istersek student classinda compareto metodunda degistirebiliriz
+			BubbleSort.Sort<Student>(students, SortDirection.Ascending);
+			//InsertionSort.Sort<Student>(students, SortDirection.Descending);
+			//MergeSort.Sort(students);
+			//QuickSort.Sort(students);
+			//SelectionSort.Sort(students, SortDirection.Descending);
 
+			foreach (var student in students)
+			{
+				Console.WriteLine(student);
+			}
+		}
 		private static void CustomTypeApp5()
 		{
 			var linkedlist = new SinglyLinkedList<Student>(students);
@@ -44,7 +60,6 @@ namespace CustomTypesApp
 				Console.WriteLine(minHeap.DeleteMinMax());
 			}
 		}
-
 		private static void CustomTypeApp4()
 		{
 			var linkedlist = new SinglyLinkedList<Student>(students);
