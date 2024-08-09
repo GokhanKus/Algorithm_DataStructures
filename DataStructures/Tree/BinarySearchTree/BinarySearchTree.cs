@@ -34,7 +34,6 @@ namespace DataStructuresLibrary.Tree.BinarySearchTree
 				{
 					parent = current;
 					//sol-alt agac
-					var asd = value.CompareTo(current.Value);
 					if (value.CompareTo(current.Value) < 0) //-1 ise kucuk 0 ise esit 1 ise buyuktr
 					{
 						current = current.Left;

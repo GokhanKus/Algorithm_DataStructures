@@ -1,6 +1,8 @@
 ﻿using CustomTypesLibrary;
 using DataStructures.Array;
+using DataStructuresLibrary.Heap;
 using DataStructuresLibrary.LinkedList.SinglyLinkedList;
+using DataStructuresLibrary.Shared;
 using DataStructuresLibrary.Tree.BinarySearchTree;
 
 namespace CustomTypesApp
@@ -24,8 +26,25 @@ namespace CustomTypesApp
 			//CustomTypeApp1();
 			//CustomTypeApp2();
 			//CustomTypeApp3();
-			CustomTypeApp4();
+			//CustomTypeApp4();
+			CustomTypeApp5();
 		}
+
+		private static void CustomTypeApp5()
+		{
+			var linkedlist = new SinglyLinkedList<Student>(students);
+			var bst = new BinarySearchTree<Student>(linkedlist);
+
+			//var heap = new MinHeap<Student>(bst);
+			//var heap2 = new MaxHeap<Student>(bst);
+			var maxHeap = new BinaryHeap<Student>(SortDirection.Descending, bst);//minheap ya da max heap olmasini burada belirleyelim
+			var minHeap = new BinaryHeap<Student>(SortDirection.Ascending, bst);//minheap ya da max heap olmasini burada belirleyelim
+			foreach (var student in minHeap)
+			{
+				Console.WriteLine(minHeap.DeleteMinMax());
+			}
+		}
+
 		private static void CustomTypeApp4()
 		{
 			var linkedlist = new SinglyLinkedList<Student>(students);
