@@ -163,8 +163,16 @@ namespace DataStructuresLibrary.LinkedList.SinglyLinkedList
 				AddFirst(value);
 				return;
 			}
+
 			var newNode = new SinglyLinkedListNode<T>(value);
 			var current = Head;
+
+			if (refNode == Head)
+			{
+				newNode.Next = Head;
+				Head = newNode;
+				return;
+			}
 			while (current.Next != null)
 			{
 				if (current.Next == refNode)
