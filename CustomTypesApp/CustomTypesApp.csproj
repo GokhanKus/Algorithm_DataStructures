@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CustomTypesLibrary\CustomTypesLibrary.csproj" />
+    <ProjectReference Include="..\DataStructures\DataStructuresLibrary.csproj" />
   </ItemGroup>
 
 </Project>
