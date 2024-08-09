@@ -12,8 +12,8 @@ namespace DataStructuresLibrary.Tree.BinarySearchTree
 		//public Node<T>? _currentNode { get; set; }
 		public BinarySearchTreeEnumerator(Node<T> root)
 		{
-			list = new BinaryTree<T>().LevelOrderNonRecursive(root); //farkli sekillerde de agaci dolasabiliriz
-			//list = new BinaryTree<T>().InOrderNonRecursive(root);
+			//list = new BinaryTree<T>().LevelOrderNonRecursive(root); //farkli sekillerde de agaci dolasabiliriz
+			list = new BinaryTree<T>().InOrderNonRecursive(root);
 		}
 		public T Current => list[indexer].Value;
 		object IEnumerator.Current => Current;

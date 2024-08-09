@@ -1,6 +1,7 @@
 ﻿using CustomTypesLibrary;
 using DataStructures.Array;
 using DataStructuresLibrary.LinkedList.SinglyLinkedList;
+using DataStructuresLibrary.Tree.BinarySearchTree;
 
 namespace CustomTypesApp
 {
@@ -22,7 +23,18 @@ namespace CustomTypesApp
 			};
 			//CustomTypeApp1();
 			//CustomTypeApp2();
-			CustomTypeApp3();
+			//CustomTypeApp3();
+			CustomTypeApp4();
+		}
+		private static void CustomTypeApp4()
+		{
+			var linkedlist = new SinglyLinkedList<Student>(students);
+
+			var bst = new BinarySearchTree<Student>(linkedlist);
+			foreach (var student in bst)
+			{
+				Console.WriteLine(student);
+			}
 		}
 		private static void CustomTypeApp3()
 		{
